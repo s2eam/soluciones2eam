@@ -1,0 +1,37 @@
+.section {
+  display: flex;
+  align-items: center;
+  min-height: 90svh;
+  padding-block: var(--space-xl);
+  scroll-margin-top: 3.5rem;
+  scroll-snap-align: start;
+}
+
+.section--light {
+  background: var(--color-white);
+}
+
+.section--build {
+  --section-color: var(--color-cement);
+}
+
+.section--security {
+  --section-color: var(--color-security);
+}
+
+.section--contact {
+  --section-color: var(--color-metal);
+}
+
+.section__inner {
+  width: min(100% - 2rem, 72rem);
+}
+
+.section__title::after {
+  display: block;
+  width: 4rem;
+  height: 6px;
+  margin-top: 0.5rem;
+  background: var(--section-color, var(--color-ink));
+  content: "";
+}

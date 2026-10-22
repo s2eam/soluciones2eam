@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es-CR" data-theme="b">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Solicitudes | Soluciones2EAM</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="../assets/img/logo-mark-b.svg" type="image/svg+xml" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=IBM+Plex+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <script type="module" src="../assets/js/admin.js"></script>
+  </head>
+  <body>
+    <main class="wrap admin">
+      <h1>Solicitudes</h1>
+      <p>Pega tu clave de administración. No se guarda en el navegador.</p>
+      <div class="admin__login">
+        <label for="token" class="contact-form__label">Clave</label>
+        <input class="contact-form__input" id="token" type="password" autocomplete="off" data-js="admin-token" />
+        <button class="button button--primary" type="button" data-js="admin-load">Cargar solicitudes</button>
+      </div>
+      <p class="admin__status" role="status" aria-live="polite" data-js="admin-status"></p>
+      <div class="admin__scroll">
+        <table class="admin__table">
+          <thead>
+            <tr><th>N.º</th><th>Fecha</th><th>Cliente</th><th>Servicio y zona</th><th>Detalle</th><th>Estado</th><th>Contacto</th></tr>
+          </thead>
+          <tbody data-js="admin-rows"></tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>

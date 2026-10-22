@@ -1,0 +1,9 @@
+.footer {
+  padding-block: var(--space-lg);
+  background: var(--color-ink);
+  color: var(--color-bone);
+}
+
+.footer__text {
+  margin: 0;
+}

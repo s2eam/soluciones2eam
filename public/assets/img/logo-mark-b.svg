@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Soluciones2EAM">
+  <polygon points="32,3 61,24 61,61 3,61 3,24" fill="#0f2a2e" stroke="#9aa6a8" stroke-width="2"/>
+  <rect x="12" y="30" width="26" height="6" fill="#9aa0a5"/>
+  <rect x="12" y="40" width="26" height="6" fill="#a8693f"/>
+  <rect x="12" y="50" width="26" height="6" fill="#d9483b"/>
+  <circle cx="48" cy="43" r="8" fill="#243b6b" stroke="#f2b705" stroke-width="3"/>
+  <circle cx="48" cy="43" r="2.5" fill="#f2b705"/>
+</svg>

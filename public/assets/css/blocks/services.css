@@ -1,0 +1,55 @@
+.services__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-card {
+  padding: var(--space-md);
+  border-top: 8px solid var(--card-color, var(--color-cement));
+  background: var(--color-white);
+}
+
+.section--light .service-card {
+  background: var(--color-bone);
+}
+
+.service-card--metal {
+  --card-color: var(--color-metal);
+}
+
+.service-card--wood {
+  --card-color: var(--color-wood);
+}
+
+.service-card--cement {
+  --card-color: var(--color-cement);
+}
+
+.service-card--paint {
+  --card-color: var(--color-paint);
+}
+
+.service-card--electric {
+  --card-color: var(--color-electric);
+}
+
+.service-card--security {
+  --card-color: var(--color-security);
+}
+
+.service-card__title {
+  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+}
+
+.service-card__text {
+  margin: 0;
+}
+
+.service-card__action {
+  margin-top: var(--space-sm);
+}

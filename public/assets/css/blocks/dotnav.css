@@ -1,0 +1,49 @@
+.dotnav {
+  position: fixed;
+  top: 50%;
+  right: 0.9rem;
+  z-index: 15;
+  transform: translateY(-50%);
+}
+
+.dotnav__list {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dotnav__link {
+  position: relative;
+  display: block;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 2px solid var(--color-ink);
+  border-radius: 50%;
+  background: var(--color-bone);
+}
+
+.dotnav__link[aria-current="true"] {
+  background: var(--color-electric);
+  transform: scale(1.3);
+}
+
+.dotnav__label {
+  position: absolute;
+  top: 50%;
+  right: 1.6rem;
+  padding: 0.2rem 0.6rem;
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.dotnav__link:hover .dotnav__label,
+.dotnav__link:focus-visible .dotnav__label {
+  opacity: 1;
+}

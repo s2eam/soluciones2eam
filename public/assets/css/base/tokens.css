@@ -1,0 +1,24 @@
+:root {
+  /* Base */
+  --color-ink: #1d2124;
+  --color-bone: #f4f2ee;
+  --color-white: #fff;
+
+  /* Materiales y servicios */
+  --color-cement: #6f7479;
+  --color-cement-light: #d9dbdc;
+  --color-wood: #7a4a2b;
+  --color-metal: #b3261e;
+  --color-paint: #1f7a8c;
+  --color-electric: #e8ab10;
+  --color-security: #1e3a5f;
+  --color-error: #a32020;
+
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --space-sm: 0.75rem;
+  --space-md: 1.5rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+  --measure: 68ch;
+}

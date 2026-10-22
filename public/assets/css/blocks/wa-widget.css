@@ -1,0 +1,83 @@
+.wa-widget {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.wa-widget__toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.1rem;
+  border: 0;
+  background: var(--color-ink);
+  box-shadow: 0 4px 0 var(--color-electric);
+  color: var(--color-bone);
+  font: 600 1rem/1 var(--font-body);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.wa-widget__toggle:hover {
+  transform: translateY(-2px);
+}
+
+.wa-widget__icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: currentcolor;
+}
+
+.wa-widget__panel {
+  width: min(20rem, calc(100vw - 2rem));
+  padding: var(--space-md);
+  border-top: 8px solid var(--color-electric);
+  background: var(--color-white);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
+}
+
+.wa-widget__title {
+  margin: 0;
+  font: 700 1.5rem/1.1 var(--font-display);
+}
+
+.wa-widget__text {
+  margin: 0.25rem 0 var(--space-sm);
+}
+
+.wa-widget__options {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.wa-widget__option {
+  display: block;
+  padding: 0.7rem 0.9rem;
+  border: 2px solid var(--color-ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.wa-widget__option:hover,
+.wa-widget__option:focus-visible {
+  background: var(--color-ink);
+  color: var(--color-bone);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-widget__toggle {
+    transition: none;
+  }
+
+  .wa-widget__toggle:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "sitio-mejoras-constructivas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "netlify dev",
+    "lint:css": "stylelint \"public/**/*.css\"",
+    "lint:js": "eslint .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "prettier": "^3.3.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  }
+}
