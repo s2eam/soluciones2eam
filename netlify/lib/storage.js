@@ -26,3 +26,13 @@ export async function allowRequest(fingerprint, max) {
   await store.setJSON(key, { count: current.count + 1 });
   return true;
 }
+
+// Borra los contadores del límite de envíos de hace más de 3 horas (las claves empiezan con la hora UTC).
+export async function purgeOldCounters() {
+  const store = getStore({ name: "ratelimit", consistency: "strong" });
+  const cutoff = new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString().slice(0, 13);
+  const { blobs } = await store.list();
+  const old = blobs.filter((blob) => blob.key.slice(0, 13) < cutoff);
+  await Promise.all(old.map((blob) => store.delete(blob.key)));
+  return old.length;
+}

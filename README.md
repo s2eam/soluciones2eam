@@ -47,8 +47,16 @@ Botón Asistente (abajo a la derecha, junto al de WhatsApp). Es un bot **de regl
 - Textos y reglas: `public/assets/js/assistant/content.js` (aquí se edita lo que dice el bot).
 - Lógica sin interfaz: `assistant/engine.js`. Interfaz: `assistant/ui.js`.
 - No guarda la conversación; solo la solicitud final.
-- Límite de envíos: 5 solicitudes por hora por conexión (se guarda una huella de la IP, no la IP). Los contadores viejos quedan en el almacén `ratelimit`; conviene limpiarlos de vez en cuando.
+- Límite de envíos: 5 solicitudes por hora por conexión (se guarda una huella de la IP, no la IP). Los contadores viejos se borran solos cada día con la función `cleanup`.
 - La fase 6 (IA para borradores de cotización) se conectará a las solicitudes ya guardadas, con aprobación humana.
+
+## SEO técnico y mantenimiento
+
+- `public/index.html` incluye descripción, dirección canónica, etiquetas Open Graph (vista previa al compartir en redes y WhatsApp) y datos estructurados de negocio local en JSON-LD. `public/robots.txt` y `public/sitemap.xml` ayudan a los buscadores; `/admin` queda excluido.
+- Al comprar el dominio propio, cambia la dirección en todos esos archivos con `npm run seo:url -- https://tu-dominio.com`, revisa el resultado con `git diff` y haz commit y push.
+- La imagen para compartir es `public/assets/img/og-s2eam.png`; conviene rehacerla cuando haya un logo en alta resolución.
+- La función programada `cleanup` borra cada día los contadores viejos del límite de envíos. Solo corre en el sitio publicado: después del primer despliegue, revisa que aparezca en la lista de funciones de Netlify.
+- Pendiente: analítica (ver el plan de gestión, P20).
 
 ## Iconos
 
