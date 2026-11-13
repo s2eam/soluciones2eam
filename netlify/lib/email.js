@@ -39,7 +39,7 @@ export function notificationEmail(record) {
     html: `<h2>Nueva solicitud de cotización</h2>
 <table cellpadding="6">
 ${row("N.º", id)}${row("Nombre", lead.name)}${row("Teléfono", lead.phone)}${row("Correo", lead.email)}
-${row("Servicio", SERVICE_LABELS[lead.service] ?? lead.service)}${row("Zona", lead.zone)}${row("Detalle", lead.message)}
+${row("Servicio", SERVICE_LABELS[lead.service] ?? lead.service)}${row("Zona", lead.zone)}${row("Detalle", lead.message)}${row("Canal", lead.source === "bot" ? "Asistente del sitio" : "Formulario")}
 </table>`,
   };
 }

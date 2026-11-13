@@ -301,7 +301,33 @@
       </div>
     </footer>
 
-    <div class="wa-widget" data-js="wa-widget">
+    <div class="dock">
+      <div class="chat" data-js="chat">
+        <section class="chat__panel" id="chat-panel" data-js="chat-panel" role="dialog" aria-label="Asistente de S2EAM" hidden>
+          <header class="chat__header">
+            <div>
+              <p class="chat__title">Asistente S2EAM</p>
+              <p class="chat__subtitle">Asistente automatizado</p>
+            </div>
+            <div class="chat__tools">
+              <a class="button button--ghost button--small" data-js="chat-person" href="#contacto">Hablar con una persona</a>
+              <button class="chat__close" type="button" data-js="chat-close" aria-label="Cerrar asistente"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-x"></use></svg></button>
+            </div>
+          </header>
+          <div class="chat__log" data-js="chat-log" role="log" aria-live="polite" tabindex="0"></div>
+          <div class="chat__replies" data-js="chat-replies"></div>
+          <form class="chat__form" data-js="chat-form">
+            <label class="sr-only" for="chat-input">Escribe tu mensaje</label>
+            <input class="chat__input" id="chat-input" data-js="chat-input" autocomplete="off" maxlength="500" placeholder="Escribe aquí…" />
+            <button class="button button--primary button--small" type="submit">Enviar</button>
+          </form>
+        </section>
+        <button class="chat__toggle" type="button" data-js="chat-toggle" aria-expanded="false" aria-controls="chat-panel">
+          <svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-message-chatbot"></use></svg>
+          Asistente
+        </button>
+      </div>
+      <div class="wa-widget" data-js="wa-widget">
       <div class="wa-widget__panel" id="wa-panel" data-js="wa-panel" role="dialog" aria-label="Escribir por WhatsApp" hidden>
         <p class="wa-widget__title">S2EAM</p>
         <p class="wa-widget__text">¿Sobre qué quieres cotizar?</p>
@@ -316,6 +342,7 @@
         <svg class="wa-widget__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/></svg>
         WhatsApp
       </button>
+    </div>
     </div>
   </body>
 </html>

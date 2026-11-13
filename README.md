@@ -40,6 +40,16 @@ El botón flotante (`wa-widget`) usa el enlace oficial "click to chat" (`https:/
 
 El logo S2EAM está en `public/assets/img/logo-s2eam.png` (recorte circular con fondo transparente, 94 px) y `favicon.png`. El archivo original recibido está en `docs/brand/logo-original.png`. Es de baja resolución: para impresión, rótulos o pantallas muy grandes se necesita el archivo original en vector (SVG) o PNG de 1000 px o más.
 
+## Asistente de primera línea
+
+Botón Asistente (abajo a la derecha, junto al de WhatsApp). Es un bot **de reglas**: no usa IA ni cuesta por mensaje. Se identifica como asistente automatizado, responde preguntas frecuentes (zona, garantía, visita, tiempos, servicios), nunca da precios ni opiniones técnicas, y guía una solicitud de cotización paso a paso (servicio, zona, detalle, nombre, teléfono, correo opcional y confirmación con consentimiento). Al confirmar, la envía a `/api/contact` como cualquier otra solicitud (aparece en `/admin` con canal Asistente). En cualquier momento ofrece pasar a una persona por WhatsApp con un mensaje ya preparado, y lo ofrece solo tras dos respuestas que no entiende.
+
+- Textos y reglas: `public/assets/js/assistant/content.js` (aquí se edita lo que dice el bot).
+- Lógica sin interfaz: `assistant/engine.js`. Interfaz: `assistant/ui.js`.
+- No guarda la conversación; solo la solicitud final.
+- Límite de envíos: 5 solicitudes por hora por conexión (se guarda una huella de la IP, no la IP). Los contadores viejos quedan en el almacén `ratelimit`; conviene limpiarlos de vez en cuando.
+- La fase 6 (IA para borradores de cotización) se conectará a las solicitudes ya guardadas, con aprobación humana.
+
 ## Iconos
 
 Los iconos son de [Tabler Icons](https://tabler.io/icons) (licencia MIT, texto en `docs/licenses/tabler-icons-LICENSE.txt`). Están en un solo archivo, `public/assets/img/icons.svg`, y se usan así: `<svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-nombre"></use></svg>`. Para agregar otro, copia su `<symbol>` desde el paquete `@tabler/icons` (carpeta `icons/outline`) con el id `ti-nombre`. El sprite necesita servirse por HTTP (Live Server o Netlify), no abriendo el archivo directo.
@@ -67,7 +77,7 @@ docs/                   Documentación y decisiones (adr/)
 
 Funciona: página con servicios, formulario y botón de WhatsApp; la función valida los datos, filtra bots, **guarda cada caso** (Netlify Blobs) y **avisa por correo** al negocio (Resend). El panel interno está en `/admin`.
 
-**Todavía no hace**: bot de primera línea ni asistente de IA, y no limita envíos repetidos desde una misma persona (pendiente: límite de tasa).
+**Todavía no hace**: asistente de IA para cotizaciones y seguimientos (fase 6), ni atender por la API de WhatsApp.
 
 ## Configuración de la fase 4
 

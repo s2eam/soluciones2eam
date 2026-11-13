@@ -67,6 +67,7 @@ function render(leads) {
         cell(`${lead.name}${lead.email ? ` · ${lead.email}` : ""}`),
         cell(`${LABELS[lead.service] ?? lead.service}${lead.zone ? ` · ${lead.zone}` : ""}`),
         cell(lead.message),
+        cell(lead.source === "bot" ? "Asistente" : "Formulario"),
         cell(select),
         cell(whatsappLink(lead.phone)),
       );

@@ -1,3 +1,4 @@
+import { initAssistant } from "./assistant/ui.js";
 import { initContactForm } from "./modules/contact-form.js";
 import { initDotnav } from "./modules/dotnav.js";
 import { initQuote } from "./modules/quote.js";
@@ -9,3 +10,4 @@ initContactForm();
 initDotnav();
 initQuote();
 initWhatsapp();
+initAssistant();

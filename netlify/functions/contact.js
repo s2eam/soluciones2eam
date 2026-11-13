@@ -1,6 +1,9 @@
+import crypto from "node:crypto";
 import { confirmationEmail, notificationEmail, sendEmail } from "../lib/email.js";
 import { SERVICE_LABELS } from "../lib/services.js";
-import { saveLead } from "../lib/storage.js";
+import { allowRequest, saveLead } from "../lib/storage.js";
+
+const MAX_PER_HOUR = 5;
 
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
@@ -16,7 +19,16 @@ const newId = () => {
   return `${day}-${rand}`;
 };
 
-export default async (req) => {
+const fingerprint = (req, context) => {
+  const ip = context?.ip || req.headers.get("x-nf-client-connection-ip") || "desconocida";
+  return crypto
+    .createHash("sha256")
+    .update(ip + (process.env.RATE_SALT || ""))
+    .digest("hex")
+    .slice(0, 16);
+};
+
+export default async (req, context) => {
   if (req.method !== "POST") return json({ ok: false, error: "method_not_allowed" }, 405);
 
   let data;
@@ -37,6 +49,7 @@ export default async (req) => {
     zone: clean(data.zone, 100),
     message: clean(data.message, 2000),
     consent: data.consent === true,
+    source: data.source === "bot" ? "bot" : "formulario",
   };
 
   const errors = {};
@@ -48,6 +61,23 @@ export default async (req) => {
   if (!lead.consent) errors.consent = "Necesitamos tu autorización para responderte.";
 
   if (Object.keys(errors).length > 0) return json({ ok: false, errors }, 422);
+
+  // Límite de envíos por conexión. Si el contador falla, se deja pasar para no perder solicitudes.
+  try {
+    if (!(await allowRequest(fingerprint(req, context), MAX_PER_HOUR))) {
+      return json(
+        {
+          ok: false,
+          errors: {
+            rate: "Recibimos varias solicitudes desde tu conexión. Inténtalo más tarde o escríbenos por WhatsApp.",
+          },
+        },
+        429,
+      );
+    }
+  } catch {
+    // continuar
+  }
 
   const record = {
     id: newId(),
