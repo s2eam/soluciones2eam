@@ -53,3 +53,23 @@
 .service-card__action {
   margin-top: var(--space-sm);
 }
+
+.service-card__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: var(--space-sm);
+  border-radius: 50%;
+  background: var(--card-color, var(--color-cement));
+  color: var(--color-white);
+}
+
+.service-card--electric .service-card__icon {
+  color: var(--color-ink);
+}
+
+.service-card__icon .icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}

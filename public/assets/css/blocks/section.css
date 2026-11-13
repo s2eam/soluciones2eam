@@ -3,7 +3,7 @@
   align-items: center;
   min-height: 90svh;
   padding-block: var(--space-xl);
-  scroll-margin-top: 3.5rem;
+  scroll-margin-top: 4rem;
   scroll-snap-align: start;
 }
 
@@ -20,11 +20,12 @@
 }
 
 .section--contact {
-  --section-color: var(--color-metal);
+  --section-color: var(--color-brand);
 }
 
 .section__inner {
-  width: min(100% - 2rem, 72rem);
+  width: min(100% - 2 * var(--gutter), var(--container-max));
+  margin-inline: auto;
 }
 
 .section__title::after {
@@ -34,4 +35,27 @@
   margin-top: 0.5rem;
   background: var(--section-color, var(--color-ink));
   content: "";
+}
+
+.section--about {
+  --section-color: var(--color-brand-deep);
+}
+
+.section--steps {
+  --section-color: var(--color-electric);
+}
+
+.section--commitments {
+  --section-color: var(--color-cement);
+}
+
+.section--faq {
+  --section-color: var(--color-security);
+}
+
+@media (max-width: 40rem) {
+  .section {
+    min-height: auto;
+    padding-block: var(--space-lg);
+  }
 }

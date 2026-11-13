@@ -47,3 +47,23 @@
 .dotnav__link:focus-visible .dotnav__label {
   opacity: 1;
 }
+
+@media (max-width: 40rem) {
+  .dotnav {
+    right: 0.3rem;
+  }
+
+  .dotnav__list {
+    gap: 0.8rem;
+  }
+
+  .dotnav__link {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-width: 1.5px;
+  }
+
+  .dotnav__label {
+    display: none;
+  }
+}

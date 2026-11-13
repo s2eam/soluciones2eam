@@ -1,4 +1,4 @@
-# Soluciones2EAM: mejoras constructivas y seguridad electrónica
+# S2EAM: mejoras constructivas y seguridad electrónica
 
 Sitio web con formulario de cotización, enlace a WhatsApp y, en fases siguientes, bot de primera línea y asistente de IA para cotizaciones y seguimientos por correo. Se gestiona según el plan de gestión del proyecto (ISO 21500/21502).
 
@@ -36,6 +36,14 @@ Para publicar: en Netlify, "Add new site" > "Import an existing project", elige 
 
 El botón flotante (`wa-widget`) usa el enlace oficial "click to chat" (`https://wa.me/<número>?text=...`) y abre WhatsApp en el celular o WhatsApp Web en el computador. No incrusta una ventana de chat dentro de la página. WhatsApp también publica un botón de marca "Chat on WhatsApp" (imagen verde o blanca, solo en inglés, que no debe modificarse); si prefieres usarlo, descárgalo de la guía oficial de WhatsApp y enlázalo con `https://wa.me/50660956381`.
 
+## Logo
+
+El logo S2EAM está en `public/assets/img/logo-s2eam.png` (recorte circular con fondo transparente, 94 px) y `favicon.png`. El archivo original recibido está en `docs/brand/logo-original.png`. Es de baja resolución: para impresión, rótulos o pantallas muy grandes se necesita el archivo original en vector (SVG) o PNG de 1000 px o más.
+
+## Iconos
+
+Los iconos son de [Tabler Icons](https://tabler.io/icons) (licencia MIT, texto en `docs/licenses/tabler-icons-LICENSE.txt`). Están en un solo archivo, `public/assets/img/icons.svg`, y se usan así: `<svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-nombre"></use></svg>`. Para agregar otro, copia su `<symbol>` desde el paquete `@tabler/icons` (carpeta `icons/outline`) con el id `ti-nombre`. El sprite necesita servirse por HTTP (Live Server o Netlify), no abriendo el archivo directo.
+
 ## Estructura
 
 ```
@@ -71,9 +79,14 @@ Funciona: página con servicios, formulario y botón de WhatsApp; la función va
 
 Privacidad: los datos de los clientes quedan guardados, así que publica la política de privacidad antes de abrir el formulario. El panel `/admin` y la API `/api/leads` solo responden con la clave.
 
+## Correo de las solicitudes
+
+Cada solicitud llega a `soluciones2eam@gmail.com` (variable `NOTIFY_EMAIL`; si falta, se usa esa dirección). Mientras se use el remitente de pruebas de Resend, el correo solo se entrega a la dirección con la que se creó la cuenta de Resend, así que esa cuenta debe estar registrada con `soluciones2eam@gmail.com` o hay que verificar un dominio propio. Los casos se guardan siempre y se ven en `/admin`.
+
 ## Pendientes antes de publicar
 
-- [x] Nombre (Soluciones2EAM) y WhatsApp (`public/assets/js/config.js`).
+- [x] Nombre (S2EAM) y WhatsApp (`public/assets/js/config.js`).
 - [ ] Definir zona de cobertura y cambiar los textos de servicios por los reales.
-- [ ] Política de privacidad y enlace desde el formulario.
+- [ ] Revisión legal de la política de privacidad (`public/privacidad/`, ya enlazada desde el formulario; es un borrador).
+- [ ] Confirmar el plazo de garantía: el sitio dice que se indica en cada cotización.
 - [x] Persistencia de casos y aviso por correo (fase 4). Falta el correo de confirmación al cliente (requiere dominio).

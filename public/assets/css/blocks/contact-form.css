@@ -1,12 +1,33 @@
+.contact__layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.contact__intro {
+  flex: 1 1 18rem;
+}
+
+.contact__note {
+  font-weight: 600;
+}
+
 .contact-form {
-  display: grid;
+  display: flex;
+  flex: 2 1 28rem;
+  flex-wrap: wrap;
   gap: var(--space-md);
-  max-width: 40rem;
-  margin-top: var(--space-md);
+  min-width: 0;
+}
+
+.contact-form > * {
+  flex: 1 1 100%;
+  min-width: 0;
 }
 
 .contact-form__field {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 0.35rem;
 }
 
@@ -16,6 +37,7 @@
 
 .contact-form__input {
   width: 100%;
+  min-height: 2.75rem;
   padding: 0.7rem;
   border: 2px solid var(--color-cement);
   background: var(--color-white);
@@ -25,13 +47,31 @@
 
 .contact-form__consent {
   display: flex;
-  gap: 0.6rem;
   align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.contact-form__consent input {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.2rem;
 }
 
 .contact-form__trap {
   position: absolute;
   left: -9999px;
+}
+
+.contact-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.contact-form__actions .button {
+  flex: 1 1 12rem;
+  text-align: center;
 }
 
 .contact-form__status {
@@ -42,12 +82,6 @@
 
 .contact-form__status--error {
   color: var(--color-error);
-}
-
-.contact-form__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
 }
 
 .contact-form__input--flash {
@@ -65,6 +99,26 @@
 
   100% {
     box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+/* Tablet: campos en parejas */
+@media (min-width: 40rem) {
+  .contact-form > .contact-form__field--half {
+    flex: 1 1 calc(50% - var(--space-md) / 2);
+  }
+}
+
+/* Escritorio: texto a la izquierda, formulario a la derecha */
+@media (min-width: 64rem) {
+  .contact__layout {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .contact__intro {
+    position: sticky;
+    top: 5rem;
   }
 }
 

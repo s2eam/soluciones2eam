@@ -1,0 +1,23 @@
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 52rem;
+  margin-top: var(--space-md);
+}
+
+.faq__item {
+  border: 2px solid var(--color-cement-light);
+  background: var(--color-bone);
+}
+
+.faq__question {
+  padding: var(--space-sm) var(--space-md);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.faq__answer {
+  margin: 0;
+  padding: 0 var(--space-md) var(--space-md);
+}

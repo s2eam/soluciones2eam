@@ -52,7 +52,7 @@ a {
 }
 
 .wrap {
-  width: min(100% - 2rem, 72rem);
+  width: min(100% - 2 * var(--gutter), var(--container-max));
   margin-inline: auto;
 }
 
@@ -60,4 +60,13 @@ a {
   html {
     scroll-behavior: auto;
   }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

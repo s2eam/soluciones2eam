@@ -10,7 +10,7 @@ const escapeHtml = (value) =>
 export async function sendEmail({ to, subject, html, replyTo }) {
   const key = process.env.RESEND_API_KEY;
   if (!key || !to) return "skipped";
-  const from = process.env.EMAIL_FROM || "Soluciones2EAM <onboarding@resend.dev>";
+  const from = process.env.EMAIL_FROM || "S2EAM <onboarding@resend.dev>";
 
   try {
     const response = await fetch("https://api.resend.com/emails", {
@@ -47,10 +47,10 @@ ${row("Servicio", SERVICE_LABELS[lead.service] ?? lead.service)}${row("Zona", le
 export function confirmationEmail(record) {
   const { id, lead } = record;
   return {
-    subject: `Recibimos tu solicitud (n.º ${id}) | Soluciones2EAM`,
+    subject: `Recibimos tu solicitud (n.º ${id}) | S2EAM`,
     html: `<p>Hola ${escapeHtml(lead.name)},</p>
 <p>Recibimos tu solicitud de cotización sobre <strong>${escapeHtml(SERVICE_LABELS[lead.service] ?? lead.service)}</strong>. Tu número de solicitud es <strong>${id}</strong>.</p>
 <p>Revisaremos los detalles y te escribiremos pronto. Si prefieres, también puedes escribirnos por WhatsApp al 6095-6381.</p>
-<p>Soluciones2EAM</p>`,
+<p>S2EAM</p>`,
   };
 }

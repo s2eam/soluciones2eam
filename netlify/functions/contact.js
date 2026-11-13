@@ -66,7 +66,7 @@ export default async (req) => {
   // Los correos son "mejor esfuerzo": si fallan, el caso ya quedó guardado.
   const notify = notificationEmail(record);
   record.emails.notify = await sendEmail({
-    to: process.env.NOTIFY_EMAIL,
+    to: process.env.NOTIFY_EMAIL || "soluciones2eam@gmail.com",
     replyTo: lead.email || undefined,
     ...notify,
   });

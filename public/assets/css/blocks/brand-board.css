@@ -88,3 +88,21 @@
 .swatch__use {
   margin: 0;
 }
+
+.swatch--mint {
+  background: var(--color-mint);
+  color: var(--color-ink);
+}
+
+.swatch--brand {
+  background: var(--color-brand);
+  color: var(--color-ink);
+}
+
+.swatch--brand-deep {
+  background: var(--color-brand-deep);
+}
+
+.swatch--ink {
+  background: var(--color-ink);
+}

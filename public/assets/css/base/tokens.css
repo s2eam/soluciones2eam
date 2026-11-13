@@ -14,6 +14,11 @@
   --color-security: #1e3a5f;
   --color-error: #a32020;
 
+  /* Colores tomados del logo S2EAM */
+  --color-brand: #22c0ca;
+  --color-brand-deep: #0e7f8a;
+  --color-mint: #71da94;
+
   --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
   --font-body: "IBM Plex Sans", system-ui, sans-serif;
   --space-sm: 0.75rem;
@@ -21,4 +26,6 @@
   --space-lg: 3rem;
   --space-xl: 5rem;
   --measure: 68ch;
+  --gutter: clamp(1.25rem, 6vw, 4rem);
+  --container-max: 70rem;
 }

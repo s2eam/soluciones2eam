@@ -1,10 +1,10 @@
 .hero {
-  min-height: calc(100svh - 3.5rem);
+  min-height: calc(100svh - 4rem);
   padding-block: var(--space-xl) 0;
   background-color: var(--color-ink);
   background-image:
-    linear-gradient(rgb(154 169 177 / 18%) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(154 169 177 / 18%) 1px, transparent 1px);
+    linear-gradient(rgb(113 218 148 / 12%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(113 218 148 / 12%) 1px, transparent 1px);
   background-size: 2rem 2rem;
   color: var(--color-bone);
   display: flex;
@@ -15,6 +15,15 @@
 
 .hero__title {
   max-width: 14ch;
+}
+
+.hero__title::before {
+  display: block;
+  width: 5rem;
+  height: 6px;
+  margin-bottom: var(--space-sm);
+  background: linear-gradient(90deg, var(--color-mint), var(--color-brand));
+  content: "";
 }
 
 .hero__lead {
@@ -67,4 +76,15 @@
 
 .hero__strip-link--security {
   background: var(--color-security);
+}
+
+.hero__actions > .button {
+  flex: 1 1 12rem;
+  text-align: center;
+}
+
+@media (min-width: 40rem) {
+  .hero__actions > .button {
+    flex: 0 0 auto;
+  }
 }
