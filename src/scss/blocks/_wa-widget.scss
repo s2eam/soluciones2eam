@@ -1,31 +1,74 @@
 @use "../abstracts/breakpoints" as bp;
 
 .wa-widget {
-  display: block;
+  position: relative;
 }
 
+// Botón redondo con el logo oficial de WhatsApp (verde de marca #25D366).
 .wa-widget__toggle {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.8rem 1.1rem;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
   border: 0;
-  background: var(--color-ink);
-  box-shadow: 0 4px 0 var(--color-electric);
-  color: var(--color-bone);
-  font: 600 1rem/1 var(--font-body);
+  border-radius: 50%;
+  background: #25d366;
+  box-shadow: 0 0.5rem 1.25rem -0.25rem rgb(0 0 0 / 40%);
+  color: var(--color-white);
   cursor: pointer;
   transition: transform 0.15s ease;
-}
 
-.wa-widget__toggle:hover {
-  transform: translateY(-2px);
+  // Aro suave que llama la atención sin ser invasivo
+  &::after {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgb(37 211 102 / 45%);
+    content: "";
+    animation: wa-ring 2.8s ease-out 1.5s 3;
+  }
+
+  &:hover {
+    transform: scale(1.06);
+  }
 }
 
 .wa-widget__icon {
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.9rem;
+  height: 1.9rem;
   fill: currentcolor;
+}
+
+// Etiqueta que aparece al pasar el mouse o con el teclado (como en Lanprosa)
+.wa-widget__tooltip {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 0.6rem);
+  padding: 0.45rem 0.8rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-ink);
+  box-shadow: 0 0.4rem 1rem -0.4rem rgb(0 0 0 / 50%);
+  color: var(--color-white);
+  font: 500 0.875rem/1.2 var(--font-body);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(6px, -50%);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.wa-widget__toggle:hover .wa-widget__tooltip,
+.wa-widget__toggle:focus-visible .wa-widget__tooltip {
+  opacity: 1;
+  transform: translate(0, -50%);
+}
+
+.wa-widget__toggle[aria-expanded="true"] .wa-widget__tooltip {
+  opacity: 0;
 }
 
 .wa-widget__panel {
@@ -35,7 +78,8 @@
   z-index: 31;
   width: min(20rem, calc(100vw - 2rem));
   padding: var(--space-md);
-  border-top: 8px solid var(--color-electric);
+  border-top: 6px solid #25d366;
+  border-radius: var(--radius-lg);
   background: var(--color-white);
   box-shadow: 0 8px 24px rgb(0 0 0 / 25%);
 }
@@ -61,6 +105,7 @@
   display: block;
   padding: 0.7rem 0.9rem;
   border: 2px solid var(--color-ink);
+  border-radius: var(--radius-md);
   font-weight: 600;
   text-decoration: none;
 }
@@ -72,11 +117,26 @@
 }
 
 @include bp.reduced-motion {
-  .wa-widget__toggle {
+  .wa-widget__toggle,
+  .wa-widget__tooltip {
     transition: none;
+  }
+
+  .wa-widget__toggle::after {
+    animation: none;
   }
 
   .wa-widget__toggle:hover {
     transform: none;
+  }
+}
+
+@keyframes wa-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(37 211 102 / 45%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 14px rgb(37 211 102 / 0%);
   }
 }

@@ -1,3 +1,5 @@
+@use "../abstracts/breakpoints" as bp;
+
 .services__list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
@@ -7,97 +9,138 @@
   list-style: none;
 }
 
+// Tarjeta estilo B (vidrio oscuro) con foto del material de fondo.
+// La foto se define en el HTML con style="--card-img: url(...)"; sin foto queda el fondo verde oscuro.
 .service-card {
+  --card-color: var(--color-cement);
+
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   align-items: flex-start;
+  min-height: 21rem;
   padding: 1.5rem;
-  border: 1px solid var(--color-cement-light);
-  border-radius: 1.25rem;
-  background: var(--color-white);
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid rgb(255 255 255 / 14%);
+  border-radius: var(--radius-lg);
+  background: var(--color-ink);
+  box-shadow: 0 1rem 2rem -1.25rem rgb(8 42 33 / 55%);
+  color: var(--color-bone);
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease;
+    transform 0.25s ease,
+    border-color 0.25s ease;
+
+  // Capa de la foto
+  &::before {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    background: var(--card-img, none) center / cover no-repeat;
+    content: "";
+    transition: transform 0.6s ease;
+  }
+
+  // Degradado para que el texto siempre se lea sobre la foto
+  &::after {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgb(8 42 33 / 25%) 0%,
+      rgb(8 42 33 / 68%) 38%,
+      rgb(8 42 33 / 95%) 66%
+    );
+    content: "";
+  }
+
+  &:hover,
+  &:focus-within {
+    border-color: color-mix(in srgb, var(--card-color) 70%, white);
+    transform: translateY(-4px);
+
+    &::before {
+      transform: scale(1.06);
+    }
+  }
+
+  &--metal {
+    --card-color: var(--color-metal);
+  }
+
+  &--wood {
+    --card-color: var(--color-wood);
+  }
+
+  &--cement {
+    --card-color: var(--color-cement);
+  }
+
+  &--paint {
+    --card-color: var(--color-paint);
+  }
+
+  &--electric {
+    --card-color: var(--color-electric);
+  }
+
+  &--security {
+    --card-color: var(--color-brand);
+  }
+
+  // Icono en vidrio con un halo del color del servicio
+  &__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    margin-bottom: auto;
+    border: 1px solid rgb(255 255 255 / 25%);
+    border-radius: 50%;
+    background: rgb(255 255 255 / 14%);
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--card-color) 30%, transparent);
+    color: var(--color-white);
+    backdrop-filter: blur(8px);
+
+    .icon {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+
+  &__title {
+    margin: var(--space-md) 0 0.35rem;
+    text-shadow: 0 1px 12px rgb(0 0 0 / 35%);
+    font-size: 1.6rem;
+    text-wrap: balance;
+  }
+
+  &__text {
+    margin: 0;
+    color: rgb(244 241 234 / 82%);
+  }
+
+  &__action {
+    margin-top: var(--space-sm);
+    border-radius: var(--radius-pill);
+    backdrop-filter: blur(6px);
+  }
 }
 
-.service-card:hover,
-.service-card:focus-within {
-  border-color: color-mix(in srgb, var(--card-color, var(--color-cement)) 45%, var(--color-cement-light));
-  box-shadow: 0 1rem 2.5rem -1.25rem rgb(8 42 33 / 35%);
-  transform: translateY(-4px);
-}
-
-.section--light .service-card {
-  background: var(--color-bone);
-}
-
-.service-card--metal {
-  --card-color: var(--color-metal);
-}
-
-.service-card--wood {
-  --card-color: var(--color-wood);
-}
-
-.service-card--cement {
-  --card-color: var(--color-cement);
-}
-
-.service-card--paint {
-  --card-color: var(--color-paint);
-}
-
-.service-card--electric {
-  --card-color: var(--color-electric);
-}
-
-.service-card--security {
-  --card-color: var(--color-security);
-}
-
-.service-card__title {
-  margin-bottom: 0.25rem;
-  font-size: 1.5rem;
-}
-
-.service-card__text {
-  margin: 0;
-}
-
-.service-card__action {
-  margin-top: auto;
-  padding-top: var(--space-sm);
-}
-
-.service-card__icon {
-  display: inline-grid;
-  place-items: center;
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: var(--space-sm);
-  border-radius: 1rem;
-  background: color-mix(in srgb, var(--card-color, var(--color-cement)) 14%, transparent);
-  color: var(--card-color, var(--color-cement));
-}
-
-.service-card--electric .service-card__icon {
-  background: color-mix(in srgb, var(--card-color) 22%, transparent);
-  color: color-mix(in srgb, var(--card-color) 70%, var(--color-ink));
-}
-
-.service-card__icon .icon {
-  width: 1.75rem;
-  height: 1.75rem;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .service-card {
+@include bp.reduced-motion {
+  .service-card,
+  .service-card::before {
     transition: none;
   }
 
   .service-card:hover,
   .service-card:focus-within {
     transform: none;
+
+    &::before {
+      transform: none;
+    }
   }
 }
