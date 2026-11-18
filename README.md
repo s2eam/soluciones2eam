@@ -34,17 +34,25 @@ Para publicar: en Netlify, "Add new site" > "Import an existing project", elige 
 
 ## Botón de WhatsApp
 
-El botón flotante (`wa-widget`) usa el enlace oficial "click to chat" (`https://wa.me/<número>?text=...`) y abre WhatsApp en el celular o WhatsApp Web en el computador. No incrusta una ventana de chat dentro de la página. WhatsApp también publica un botón de marca "Chat on WhatsApp" (imagen verde o blanca, solo en inglés, que no debe modificarse); si prefieres usarlo, descárgalo de la guía oficial de WhatsApp y enlázalo con `https://wa.me/50660956381`.
+Botón redondo verde (`wa-widget`) con el logo oficial de WhatsApp y una etiqueta al pasar el mouse. Al tocarlo muestra un menú de temas; cada opción abre WhatsApp con un mensaje ya preparado (`https://wa.me/<número>?text=...`). No incrusta una ventana de chat.
 
 ## Logo
 
-El logo S2EAM está en `public/assets/img/logo-s2eam.png` (recorte circular con fondo transparente, 94 px) y `favicon.png`. El archivo original recibido está en `docs/brand/logo-original.png`. Es de baja resolución: para impresión, rótulos o pantallas muy grandes se necesita el archivo original en vector (SVG) o PNG de 1000 px o más.
+Versión vectorial en `public/assets/img/logo/`: símbolo, horizontal, vertical, versiones en blanco y en un solo color, más PNG para favicon, iPhone y redes. El encabezado y el pie usan `logo-symbol.svg`. Los archivos anteriores están en `public/assets/img/anterior/` y el original recibido en `docs/brand/logo-original.png`.
+
+## Secciones de la página
+
+- **Portada**: título, texto y botones (sin franja de colores desde la v0.11).
+- **Servicios** (`_services.scss`, `modules/service-accordion.js`): acordeón por grupo. Cada panel es un servicio con su foto; el abierto muestra descripción y "Cotizar este servicio", que preselecciona el servicio en el formulario. En celular los paneles se apilan como franjas.
+- **Fotos de servicios**: `public/assets/img/servicios/*.webp` (Pexels, ver `CREDITOS.md`). Para cambiar una foto basta con reemplazar el archivo con el mismo nombre. Se cargan con ruta desde la raíz (`/assets/...`), así que se ven con `npm run dev` y en Netlify, no con Live Server.
+- **Nuestros valores** (`_values.scss`): cinta métrica; cada valor cuelga de una marca. En pantallas angostas la cinta queda vertical.
+- **Cómo trabajamos** (`_steps.scss`, `modules/steps.js`): avance de obra de 0 % a 100 %; al tocar una etapa la barra avanza hasta ella.
 
 ## Asistente de primera línea
 
-Botón Asistente (abajo a la derecha, junto al de WhatsApp). Es un bot **de reglas**: no usa IA ni cuesta por mensaje. Se identifica como asistente automatizado, responde preguntas frecuentes (zona, garantía, visita, tiempos, servicios), nunca da precios ni opiniones técnicas, y guía una solicitud de cotización paso a paso (servicio, zona, detalle, nombre, teléfono, correo opcional y confirmación con consentimiento). Al confirmar, la envía a `/api/contact` como cualquier otra solicitud (aparece en `/admin` con canal Asistente). En cualquier momento ofrece pasar a una persona por WhatsApp con un mensaje ya preparado, y lo ofrece solo tras dos respuestas que no entiende.
+Botón «Ayuda» con el símbolo del logo (abajo a la derecha, junto al de WhatsApp). Al tocarlo muestra tres preguntas frecuentes como burbujas; cada una abre un centro de ayuda (`<dialog>`) con temas, respuestas y botones de acción. La caja de texto solo aparece al elegir «Cotizar por aquí» o «Escribir mi consulta». Es un bot **de reglas**: no usa IA ni cuesta por mensaje. Se identifica como asistente automatizado, responde preguntas frecuentes (zona, garantía, visita, tiempos, servicios), nunca da precios ni opiniones técnicas, y guía una solicitud de cotización paso a paso (servicio, zona, detalle, nombre, teléfono, correo opcional y confirmación con consentimiento). Al confirmar, la envía a `/api/contact` como cualquier otra solicitud (aparece en `/admin` con canal Asistente). En cualquier momento ofrece pasar a una persona por WhatsApp con un mensaje ya preparado, y lo ofrece solo tras dos respuestas que no entiende.
 
-- Textos y reglas: `public/assets/js/assistant/content.js` (aquí se edita lo que dice el bot).
+- Textos y reglas: `public/assets/js/assistant/content.js` (aquí se edita lo que dice el bot; `HELP_QA` son las preguntas del centro de ayuda y `HELP_FEATURED` las burbujas).
 - Lógica sin interfaz: `assistant/engine.js`. Interfaz: `assistant/ui.js`.
 - No guarda la conversación; solo la solicitud final.
 - Límite de envíos: 5 solicitudes por hora por conexión (se guarda una huella de la IP, no la IP). Los contadores viejos se borran solos cada día con la función `cleanup`.
@@ -84,7 +92,7 @@ docs/                   Documentación y decisiones (adr/)
 - JS: los ganchos de comportamiento usan atributos `data-js="..."`, no clases de estilo.
 - Commits: mensajes cortos con prefijo (`feat:`, `fix:`, `docs:`, `chore:`).
 
-## Estado actual (v0.2)
+## Estado actual (v0.12)
 
 Funciona: página con servicios, formulario y botón de WhatsApp; la función valida los datos, filtra bots, **guarda cada caso** (Netlify Blobs) y **avisa por correo** al negocio (Resend). El panel interno está en `/admin`.
 

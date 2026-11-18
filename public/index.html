@@ -156,50 +156,72 @@
             <a class="button button--ghost button--on-dark" data-js="whatsapp" href="#contacto">Escribir por WhatsApp</a>
           </div>
         </div>
-        <ul class="hero__strip">
-          <li><a class="hero__strip-link hero__strip-link--metal" href="#construccion">Metal</a></li>
-          <li><a class="hero__strip-link hero__strip-link--wood" href="#construccion">Madera</a></li>
-          <li><a class="hero__strip-link hero__strip-link--cement" href="#construccion">Cemento</a></li>
-          <li><a class="hero__strip-link hero__strip-link--paint" href="#construccion">Pintura</a></li>
-          <li><a class="hero__strip-link hero__strip-link--electric" href="#construccion">Electricidad</a></li>
-          <li><a class="hero__strip-link hero__strip-link--security" href="#seguridad">Seguridad</a></li>
-        </ul>
       </section>
 
       <section class="section section--build" id="construccion">
         <div class="section__inner">
           <h2 class="section__title">Construcción y mejoras</h2>
-          <ul class="services__list">
-              <li class="service-card service-card--metal" style="--card-img: url('/assets/img/servicios/metal.webp')">
-                <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-flame"></use></svg></span>
-                <h3 class="service-card__title">Soldadura y estructuras metálicas</h3>
-                <p class="service-card__text">Portones, techos, rejas y estructuras. Las obras que lo requieren pasan por revisión de un ingeniero estructural.</p>
-                <a class="button button--ghost button--on-dark button--small service-card__action" data-js="quote" data-service="soldadura-estructuras" href="#contacto">Cotizar este servicio</a>
-              </li>
-              <li class="service-card service-card--paint" style="--card-img: url('/assets/img/servicios/pintura.webp')">
-                <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-paint"></use></svg></span>
-                <h3 class="service-card__title">Pintura</h3>
-                <p class="service-card__text">Interior, exterior y protección contra la corrosión.</p>
-                <a class="button button--ghost button--on-dark button--small service-card__action" data-js="quote" data-service="pintura" href="#contacto">Cotizar este servicio</a>
-              </li>
-              <li class="service-card service-card--electric" style="--card-img: url('/assets/img/servicios/electricidad.webp')">
-                <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-bolt"></use></svg></span>
-                <h3 class="service-card__title">Electricidad residencial</h3>
-                <p class="service-card__text">Instalaciones, reparaciones y mejoras en casas.</p>
-                <a class="button button--ghost button--on-dark button--small service-card__action" data-js="quote" data-service="electricidad" href="#contacto">Cotizar este servicio</a>
-              </li>
-              <li class="service-card service-card--wood" style="--card-img: url('/assets/img/servicios/madera.webp')">
-                <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-hammer"></use></svg></span>
-                <h3 class="service-card__title">Acabados en madera</h3>
-                <p class="service-card__text">Detalles y acabados en madera para tu proyecto.</p>
-                <a class="button button--ghost button--on-dark button--small service-card__action" data-js="quote" data-service="madera" href="#contacto">Cotizar este servicio</a>
-              </li>
-              <li class="service-card service-card--cement" style="--card-img: url('/assets/img/servicios/remodelacion.webp')">
-                <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-home-cog"></use></svg></span>
-                <h3 class="service-card__title">Mejoras y remodelaciones</h3>
-                <p class="service-card__text">Reparaciones y ampliaciones a la medida de tu propiedad.</p>
-                <a class="button button--ghost button--on-dark button--small service-card__action" data-js="quote" data-service="mejoras" href="#contacto">Cotizar este servicio</a>
-              </li>
+          <ul class="service-acc" data-js="service-acc">
+            <li class="service-acc__item service-acc__item--metal is-open" style="--card-img: url('/assets/img/servicios/metal.webp')">
+              <div class="service-acc__panel">
+                <button class="service-acc__toggle" type="button" aria-expanded="true" aria-controls="svc-soldadura-estructuras" aria-label="Soldadura y estructuras metálicas"></button>
+                <span class="service-acc__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-flame"></use></svg></span>
+                <span class="service-acc__label" aria-hidden="true">Soldadura</span>
+                <div class="service-acc__body" id="svc-soldadura-estructuras">
+                  <h3 class="service-acc__title">Soldadura y estructuras metálicas</h3>
+                  <p class="service-acc__text">Portones, techos, rejas y estructuras. Las obras que lo requieren pasan por revisión de un ingeniero estructural.</p>
+                  <a class="service-acc__action" data-js="quote" data-service="soldadura-estructuras" href="#contacto">Cotizar este servicio →</a>
+                </div>
+              </div>
+            </li>
+            <li class="service-acc__item service-acc__item--paint" style="--card-img: url('/assets/img/servicios/pintura.webp')">
+              <div class="service-acc__panel">
+                <button class="service-acc__toggle" type="button" aria-expanded="false" aria-controls="svc-pintura" aria-label="Pintura"></button>
+                <span class="service-acc__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-paint"></use></svg></span>
+                <span class="service-acc__label" aria-hidden="true">Pintura</span>
+                <div class="service-acc__body" id="svc-pintura">
+                  <h3 class="service-acc__title">Pintura</h3>
+                  <p class="service-acc__text">Interior, exterior y protección contra la corrosión.</p>
+                  <a class="service-acc__action" data-js="quote" data-service="pintura" href="#contacto">Cotizar este servicio →</a>
+                </div>
+              </div>
+            </li>
+            <li class="service-acc__item service-acc__item--electric" style="--card-img: url('/assets/img/servicios/electricidad.webp')">
+              <div class="service-acc__panel">
+                <button class="service-acc__toggle" type="button" aria-expanded="false" aria-controls="svc-electricidad" aria-label="Electricidad residencial"></button>
+                <span class="service-acc__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-bolt"></use></svg></span>
+                <span class="service-acc__label" aria-hidden="true">Electricidad</span>
+                <div class="service-acc__body" id="svc-electricidad">
+                  <h3 class="service-acc__title">Electricidad residencial</h3>
+                  <p class="service-acc__text">Instalaciones, reparaciones y mejoras en casas.</p>
+                  <a class="service-acc__action" data-js="quote" data-service="electricidad" href="#contacto">Cotizar este servicio →</a>
+                </div>
+              </div>
+            </li>
+            <li class="service-acc__item service-acc__item--wood" style="--card-img: url('/assets/img/servicios/madera.webp')">
+              <div class="service-acc__panel">
+                <button class="service-acc__toggle" type="button" aria-expanded="false" aria-controls="svc-madera" aria-label="Acabados en madera"></button>
+                <span class="service-acc__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-hammer"></use></svg></span>
+                <span class="service-acc__label" aria-hidden="true">Madera</span>
+                <div class="service-acc__body" id="svc-madera">
+                  <h3 class="service-acc__title">Acabados en madera</h3>
+                  <p class="service-acc__text">Detalles y acabados en madera para tu proyecto.</p>
+                  <a class="service-acc__action" data-js="quote" data-service="madera" href="#contacto">Cotizar este servicio →</a>
+                </div>
+              </div>
+            </li>
+            <li class="service-acc__item service-acc__item--cement" style="--card-img: url('/assets/img/servicios/remodelacion.webp')">
+              <div class="service-acc__panel">
+                <button class="service-acc__toggle" type="button" aria-expanded="false" aria-controls="svc-mejoras" aria-label="Mejoras y remodelaciones"></button>
+                <span class="service-acc__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-home-cog"></use></svg></span>
+                <span class="service-acc__label" aria-hidden="true">Remodelación</span>
+                <div class="service-acc__body" id="svc-mejoras">
+                  <h3 class="service-acc__title">Mejoras y remodelaciones</h3>
+                  <p class="service-acc__text">Reparaciones y ampliaciones a la medida de tu propiedad.</p>
+                  <a class="service-acc__action" data-js="quote" data-service="mejoras" href="#contacto">Cotizar este servicio →</a>
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
       </section>
@@ -207,25 +229,43 @@
       <section class="section section--light section--security" id="seguridad">
         <div class="section__inner">
           <h2 class="section__title">Seguridad electrónica</h2>
-          <ul class="services__list">
-              <li class="service-card service-card--security" style="--card-img: url('/assets/img/servicios/camaras.webp')">
-                <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-camera"></use></svg></span>
-                <h3 class="service-card__title">Cámaras de seguridad (CCTV)</h3>
-                <p class="service-card__text">Venta e instalación, con revisión desde el celular.</p>
-                <a class="button button--ghost button--on-dark button--small service-card__action" data-js="quote" data-service="cctv" href="#contacto">Cotizar este servicio</a>
-              </li>
-              <li class="service-card service-card--security" style="--card-img: url('/assets/img/servicios/alarmas.webp')">
-                <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-bell-ringing"></use></svg></span>
-                <h3 class="service-card__title">Alarmas</h3>
-                <p class="service-card__text">Venta e instalación para casas y negocios.</p>
-                <a class="button button--ghost button--on-dark button--small service-card__action" data-js="quote" data-service="alarmas" href="#contacto">Cotizar este servicio</a>
-              </li>
-              <li class="service-card service-card--security" style="--card-img: url('/assets/img/servicios/portones.webp')">
-                <span class="service-card__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-car-garage"></use></svg></span>
-                <h3 class="service-card__title">Portones eléctricos</h3>
-                <p class="service-card__text">Venta, instalación y mantenimiento.</p>
-                <a class="button button--ghost button--on-dark button--small service-card__action" data-js="quote" data-service="portones" href="#contacto">Cotizar este servicio</a>
-              </li>
+          <ul class="service-acc" data-js="service-acc">
+            <li class="service-acc__item service-acc__item--security is-open" style="--card-img: url('/assets/img/servicios/camaras.webp')">
+              <div class="service-acc__panel">
+                <button class="service-acc__toggle" type="button" aria-expanded="true" aria-controls="svc-cctv" aria-label="Cámaras de seguridad (CCTV)"></button>
+                <span class="service-acc__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-camera"></use></svg></span>
+                <span class="service-acc__label" aria-hidden="true">Cámaras</span>
+                <div class="service-acc__body" id="svc-cctv">
+                  <h3 class="service-acc__title">Cámaras de seguridad (CCTV)</h3>
+                  <p class="service-acc__text">Venta e instalación, con revisión desde el celular.</p>
+                  <a class="service-acc__action" data-js="quote" data-service="cctv" href="#contacto">Cotizar este servicio →</a>
+                </div>
+              </div>
+            </li>
+            <li class="service-acc__item service-acc__item--security" style="--card-img: url('/assets/img/servicios/alarmas.webp')">
+              <div class="service-acc__panel">
+                <button class="service-acc__toggle" type="button" aria-expanded="false" aria-controls="svc-alarmas" aria-label="Alarmas"></button>
+                <span class="service-acc__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-bell-ringing"></use></svg></span>
+                <span class="service-acc__label" aria-hidden="true">Alarmas</span>
+                <div class="service-acc__body" id="svc-alarmas">
+                  <h3 class="service-acc__title">Alarmas</h3>
+                  <p class="service-acc__text">Venta e instalación para casas y negocios.</p>
+                  <a class="service-acc__action" data-js="quote" data-service="alarmas" href="#contacto">Cotizar este servicio →</a>
+                </div>
+              </div>
+            </li>
+            <li class="service-acc__item service-acc__item--security" style="--card-img: url('/assets/img/servicios/portones.webp')">
+              <div class="service-acc__panel">
+                <button class="service-acc__toggle" type="button" aria-expanded="false" aria-controls="svc-portones" aria-label="Portones eléctricos"></button>
+                <span class="service-acc__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-car-garage"></use></svg></span>
+                <span class="service-acc__label" aria-hidden="true">Portones</span>
+                <div class="service-acc__body" id="svc-portones">
+                  <h3 class="service-acc__title">Portones eléctricos</h3>
+                  <p class="service-acc__text">Venta, instalación y mantenimiento.</p>
+                  <a class="service-acc__action" data-js="quote" data-service="portones" href="#contacto">Cotizar este servicio →</a>
+                </div>
+              </div>
+            </li>
           </ul>
         </div>
       </section>
@@ -250,51 +290,89 @@
             </div>
           </div>
           <h3 class="about__heading">Nuestros valores</h3>
-          <ul class="values">
-            <li class="values__item">
-              <span class="values__circle"><svg class="icon values__icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-shield-check"></use></svg></span>
-              <strong class="values__name">Seguridad primero</strong>
-              <span class="values__text">Nada justifica poner en riesgo a personas ni propiedades.</span>
-            </li>
-            <li class="values__item">
-              <span class="values__circle"><svg class="icon values__icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-award"></use></svg></span>
-              <strong class="values__name">Trabajo bien hecho</strong>
-              <span class="values__text">Calidad técnica y buenos acabados en cada obra.</span>
-            </li>
-            <li class="values__item">
-              <span class="values__circle"><svg class="icon values__icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-eye-check"></use></svg></span>
-              <strong class="values__name">Transparencia</strong>
-              <span class="values__text">Sin sorpresas en precios ni plazos.</span>
-            </li>
-            <li class="values__item">
-              <span class="values__circle"><svg class="icon values__icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-clock-check"></use></svg></span>
-              <strong class="values__name">Responsabilidad</strong>
-              <span class="values__text">Cumplimos lo que prometemos.</span>
-            </li>
-            <li class="values__item">
-              <span class="values__circle"><svg class="icon values__icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-bulb"></use></svg></span>
-              <strong class="values__name">Innovación práctica</strong>
-              <span class="values__text">Usamos tecnología cuando le ahorra tiempo o dinero al cliente.</span>
-            </li>
-            <li class="values__item">
-              <span class="values__circle"><svg class="icon values__icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-heart-handshake"></use></svg></span>
-              <strong class="values__name">Trato cercano</strong>
-              <span class="values__text">Escuchamos y explicamos sin tecnicismos.</span>
-            </li>
-          </ul>
+          <div class="values">
+            <div class="values__tape" aria-hidden="true">
+              <span class="values__numbers"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span><span>70</span><span>80</span></span>
+            </div>
+            <ul class="values__list">
+              <li class="values__item">
+                <svg class="icon values__icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-shield-check"></use></svg>
+                <strong class="values__name">Seguridad primero</strong>
+                <span class="values__text">Nada justifica poner en riesgo a personas ni propiedades.</span>
+              </li>
+              <li class="values__item">
+                <svg class="icon values__icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-award"></use></svg>
+                <strong class="values__name">Trabajo bien hecho</strong>
+                <span class="values__text">Calidad técnica y buenos acabados en cada obra.</span>
+              </li>
+              <li class="values__item">
+                <svg class="icon values__icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-eye-check"></use></svg>
+                <strong class="values__name">Transparencia</strong>
+                <span class="values__text">Sin sorpresas en precios ni plazos.</span>
+              </li>
+              <li class="values__item">
+                <svg class="icon values__icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-clock-check"></use></svg>
+                <strong class="values__name">Responsabilidad</strong>
+                <span class="values__text">Cumplimos lo que prometemos.</span>
+              </li>
+              <li class="values__item">
+                <svg class="icon values__icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-bulb"></use></svg>
+                <strong class="values__name">Innovación práctica</strong>
+                <span class="values__text">Usamos tecnología cuando le ahorra tiempo o dinero al cliente.</span>
+              </li>
+              <li class="values__item">
+                <svg class="icon values__icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-heart-handshake"></use></svg>
+                <strong class="values__name">Trato cercano</strong>
+                <span class="values__text">Escuchamos y explicamos sin tecnicismos.</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </section>
 
       <section class="section section--light section--steps" id="como-trabajamos">
         <div class="section__inner">
           <h2 class="section__title">Cómo trabajamos</h2>
-          <ol class="steps">
-            <li class="steps__item"><h3 class="steps__title">Cuéntanos qué necesitas</h3><p class="steps__text">Escríbenos por el formulario o por WhatsApp.</p></li>
-            <li class="steps__item"><h3 class="steps__title">Revisamos tu caso</h3><p class="steps__text">Con fotos o con una visita técnica, según el trabajo.</p></li>
-            <li class="steps__item"><h3 class="steps__title">Recibes una cotización clara</h3><p class="steps__text">Con alcance, materiales y tiempo estimado.</p></li>
-            <li class="steps__item"><h3 class="steps__title">Ejecutamos con supervisión</h3><p class="steps__text">Las obras estructurales pasan por revisión del ingeniero.</p></li>
-            <li class="steps__item"><h3 class="steps__title">Entregamos y damos garantía</h3><p class="steps__text">Revisamos la obra antes de entregarla y la respaldamos por escrito.</p></li>
-          </ol>
+          <div class="steps" data-js="steps">
+            <div class="steps__track" aria-hidden="true"><span class="steps__fill"></span></div>
+            <ol class="steps__list">
+              <li class="steps__item">
+                <button class="steps__button" type="button" aria-pressed="false">
+                  <span class="steps__meta">Etapa 1 · 0–20%</span>
+                  <span class="steps__title">Cuéntanos qué necesitas</span>
+                  <span class="steps__text">Escríbenos por el formulario o por WhatsApp.</span>
+                </button>
+              </li>
+              <li class="steps__item">
+                <button class="steps__button" type="button" aria-pressed="false">
+                  <span class="steps__meta">Etapa 2 · 20–40%</span>
+                  <span class="steps__title">Revisamos tu caso</span>
+                  <span class="steps__text">Con fotos o con una visita técnica, según el trabajo.</span>
+                </button>
+              </li>
+              <li class="steps__item">
+                <button class="steps__button" type="button" aria-pressed="false">
+                  <span class="steps__meta">Etapa 3 · 40–60%</span>
+                  <span class="steps__title">Recibes una cotización clara</span>
+                  <span class="steps__text">Con alcance, materiales y tiempo estimado.</span>
+                </button>
+              </li>
+              <li class="steps__item">
+                <button class="steps__button" type="button" aria-pressed="false">
+                  <span class="steps__meta">Etapa 4 · 60–80%</span>
+                  <span class="steps__title">Ejecutamos con supervisión</span>
+                  <span class="steps__text">Las obras estructurales pasan por revisión del ingeniero.</span>
+                </button>
+              </li>
+              <li class="steps__item">
+                <button class="steps__button" type="button" aria-pressed="false">
+                  <span class="steps__meta">Etapa 5 · 100%</span>
+                  <span class="steps__title">Entregamos y damos garantía</span>
+                  <span class="steps__text">Revisamos la obra antes de entregarla y la respaldamos por escrito.</span>
+                </button>
+              </li>
+            </ol>
+          </div>
         </div>
       </section>
 

@@ -1,81 +1,25 @@
 @use "../abstracts/breakpoints" as bp;
 
-.services__list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
-  gap: var(--space-md);
+// Servicios en acordeón: cada panel es un servicio con su foto; el abierto muestra
+// la descripción y el botón para cotizar. La foto se define en el HTML con --card-img.
+.service-acc {
+  display: flex;
+  gap: 0.5rem;
+  height: 25rem;
   margin: var(--space-md) 0 0;
   padding: 0;
   list-style: none;
 }
 
-// Tarjeta estilo B (vidrio oscuro) con foto del material de fondo.
-// La foto se define en el HTML con style="--card-img: url(...)"; sin foto queda el fondo verde oscuro.
-.service-card {
+.service-acc__item {
   --card-color: var(--color-cement);
 
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-start;
-  min-height: 21rem;
-  padding: 1.5rem;
-  overflow: hidden;
-  isolation: isolate;
-  border: 1px solid rgb(255 255 255 / 14%);
-  border-radius: var(--radius-lg);
-  background: var(--color-ink);
-  box-shadow: 0 1rem 2rem -1.25rem rgb(8 42 33 / 55%);
-  color: var(--color-bone);
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease;
-
-  // Capa de la foto
-  &::before {
-    position: absolute;
-    z-index: -2;
-    inset: 0;
-    background: var(--card-img, none) center / cover no-repeat;
-    content: "";
-    transition: transform 0.6s ease;
-  }
-
-  // Degradado para que el texto siempre se lea sobre la foto
-  &::after {
-    position: absolute;
-    z-index: -1;
-    inset: 0;
-    background: linear-gradient(
-      180deg,
-      rgb(8 42 33 / 25%) 0%,
-      rgb(8 42 33 / 68%) 38%,
-      rgb(8 42 33 / 95%) 66%
-    );
-    content: "";
-  }
-
-  &:hover,
-  &:focus-within {
-    border-color: color-mix(in srgb, var(--card-color) 70%, white);
-    transform: translateY(-4px);
-
-    &::before {
-      transform: scale(1.06);
-    }
-  }
+  flex: 1 1 0;
+  min-width: 0;
+  transition: flex-grow 0.55s cubic-bezier(0.2, 0.8, 0.2, 1);
 
   &--metal {
     --card-color: var(--color-metal);
-  }
-
-  &--wood {
-    --card-color: var(--color-wood);
-  }
-
-  &--cement {
-    --card-color: var(--color-cement);
   }
 
   &--paint {
@@ -86,61 +30,250 @@
     --card-color: var(--color-electric);
   }
 
+  &--wood {
+    --card-color: var(--color-wood);
+  }
+
+  &--cement {
+    --card-color: var(--color-cement);
+  }
+
   &--security {
     --card-color: var(--color-brand);
   }
 
-  // Icono en vidrio con un halo del color del servicio
-  &__icon {
-    display: inline-grid;
-    place-items: center;
-    width: 3.25rem;
-    height: 3.25rem;
-    margin-bottom: auto;
-    border: 1px solid rgb(255 255 255 / 25%);
-    border-radius: 50%;
-    background: rgb(255 255 255 / 14%);
-    box-shadow: 0 0 0 6px color-mix(in srgb, var(--card-color) 30%, transparent);
-    color: var(--color-white);
-    backdrop-filter: blur(8px);
+  &.is-open {
+    flex-grow: 4;
+  }
+}
 
-    .icon {
-      width: 1.6rem;
-      height: 1.6rem;
+.service-acc__panel {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: var(--radius-lg);
+  background: var(--color-ink) var(--card-img, none) center / cover no-repeat;
+  box-shadow: 0 1rem 2rem -1.5rem rgb(8 42 33 / 60%);
+  color: var(--color-white);
+
+  // Degradado para que el texto siempre se lea
+  &::before {
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgb(8 42 33 / 20%) 0%,
+      rgb(8 42 33 / 55%) 45%,
+      rgb(8 42 33 / 94%) 100%
+    );
+    content: "";
+  }
+
+  // Filo con el color del oficio
+  &::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: var(--card-color);
+    content: "";
+  }
+}
+
+// Botón invisible que cubre el panel cerrado
+.service-acc__toggle {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 0;
+  border: 0;
+  border-radius: inherit;
+  background: none;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 3px solid var(--color-mint);
+    outline-offset: -3px;
+  }
+
+  .is-open & {
+    display: none;
+  }
+}
+
+.service-acc__icon {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 14%);
+  backdrop-filter: blur(6px);
+  translate: -50% 0;
+  transition:
+    left 0.45s ease,
+    translate 0.45s ease;
+
+  .icon {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .is-open & {
+    left: 1.5rem;
+    translate: 0 0;
+  }
+}
+
+.service-acc__label {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 50%;
+  font: 700 1.35rem/1 var(--font-display);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translateX(-50%) rotate(180deg);
+  transition: opacity 0.2s ease;
+  writing-mode: vertical-rl;
+
+  .is-open & {
+    opacity: 0;
+  }
+}
+
+.service-acc__body {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  z-index: 2;
+  display: grid;
+  justify-items: start;
+  gap: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 0.75rem;
+  transition:
+    opacity 0.3s ease 0.15s,
+    translate 0.3s ease 0.15s,
+    visibility 0s linear 0.45s;
+
+  .is-open & {
+    opacity: 1;
+    visibility: visible;
+    translate: 0 0;
+    transition:
+      opacity 0.3s ease 0.15s,
+      translate 0.3s ease 0.15s,
+      visibility 0s;
+  }
+}
+
+.service-acc__title {
+  margin: 0;
+  font-size: 2.1rem;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.service-acc__text {
+  max-width: 36ch;
+  margin: 0;
+  color: rgb(244 241 234 / 88%);
+}
+
+.service-acc__action {
+  margin-top: 0.35rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--color-mint);
+  }
+}
+
+// Celular: franjas apiladas; la que se toca se abre
+@include bp.down("md") {
+  .service-acc {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .service-acc__item {
+    flex: none;
+  }
+
+  .service-acc__panel {
+    height: 4.5rem;
+    transition: height 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    &::before {
+      background: linear-gradient(90deg, rgb(8 42 33 / 88%) 35%, rgb(8 42 33 / 35%));
+    }
+
+    .is-open & {
+      height: 22rem;
+
+      &::before {
+        background: linear-gradient(180deg, rgb(8 42 33 / 15%) 10%, rgb(8 42 33 / 94%) 100%);
+      }
     }
   }
 
-  &__title {
-    margin: var(--space-md) 0 0.35rem;
-    text-shadow: 0 1px 12px rgb(0 0 0 / 35%);
-    font-size: 1.6rem;
-    text-wrap: balance;
+  .service-acc__icon {
+    top: 50%;
+    left: 1rem;
+    translate: 0 -50%;
+
+    .is-open & {
+      top: 1rem;
+      left: 1.25rem;
+      translate: 0 0;
+    }
   }
 
-  &__text {
-    margin: 0;
-    color: rgb(244 241 234 / 82%);
+  .service-acc__label {
+    top: 50%;
+    bottom: auto;
+    left: 4.25rem;
+    font-size: 1.25rem;
+    transform: translateY(-50%);
+    writing-mode: horizontal-tb;
   }
 
-  &__action {
-    margin-top: var(--space-sm);
-    border-radius: var(--radius-pill);
-    backdrop-filter: blur(6px);
+  .service-acc__body {
+    right: 1.25rem;
+    bottom: 1.25rem;
+    left: 1.25rem;
+  }
+
+  .service-acc__title {
+    font-size: 1.75rem;
   }
 }
 
 @include bp.reduced-motion {
-  .service-card,
-  .service-card::before {
+  .service-acc__item,
+  .service-acc__panel,
+  .service-acc__icon,
+  .service-acc__label,
+  .service-acc__body {
     transition: none;
-  }
-
-  .service-card:hover,
-  .service-card:focus-within {
-    transform: none;
-
-    &::before {
-      transform: none;
-    }
   }
 }

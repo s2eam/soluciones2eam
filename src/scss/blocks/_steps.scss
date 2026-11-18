@@ -1,37 +1,130 @@
+@use "../abstracts/breakpoints" as bp;
+
+// "Cómo trabajamos" como avance de obra: una barra de 0 % a 100 % y cinco etapas.
 .steps {
-  display: flex;
-  flex-wrap: wrap;
+  --progress: 20%;
+
+  display: grid;
+  gap: 1.5rem;
+  margin-top: var(--space-md);
+}
+
+.steps__track {
+  position: relative;
+  height: 0.65rem;
+  overflow: hidden;
+  border-radius: var(--radius-pill);
+  background: var(--color-cement-light);
+}
+
+.steps__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--progress);
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-mint), var(--color-brand));
+  transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  // Franjas diagonales, como cinta de obra
+  &::after {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(135deg, rgb(255 255 255 / 28%) 0 6px, transparent 6px 12px);
+    content: "";
+  }
+}
+
+.steps__list {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: var(--space-md);
-  margin: var(--space-md) 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
-  counter-reset: step;
 }
 
-.steps__item {
-  flex: 1 1 13rem;
-  padding: var(--space-md);
-  background: var(--color-bone);
-  counter-increment: step;
-}
-
-.steps__item::before {
-  display: grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  margin-bottom: var(--space-sm);
-  border-radius: 50%;
-  background: var(--color-ink);
-  color: var(--color-electric);
-  font: 700 1.5rem/1 var(--font-display);
-  content: counter(step);
+.steps__meta {
+  color: var(--color-cement);
+  font: 500 0.75rem/1.2 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.04em;
 }
 
 .steps__title {
-  font-size: 1.375rem;
+  font: 700 1.375rem/1.1 var(--font-display);
 }
 
 .steps__text {
-  margin: 0;
+  color: var(--color-cement);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.steps__button {
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+  width: 100%;
+  height: 100%;
+  padding: 0.9rem 0.25rem 0 0;
+  border: 0;
+  border-top: 2px solid var(--color-cement-light);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+
+  &.is-done {
+    border-top-color: var(--color-ink);
+
+    .steps__meta {
+      color: var(--color-brand-deep);
+    }
+  }
+
+  &[aria-pressed="true"] .steps__title {
+    color: var(--color-brand-deep);
+  }
+}
+
+// Tableta y celular: la barra queda vertical
+@media (width <= 52rem) {
+  .steps {
+    grid-template-columns: 0.65rem minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .steps__track {
+    height: auto;
+  }
+
+  .steps__fill {
+    inset: 0 0 auto;
+    width: auto;
+    height: var(--progress);
+    transition-property: height;
+  }
+
+  .steps__list {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .steps__button {
+    padding: 0.4rem 0 0.9rem 0.9rem;
+    border-top: 0;
+    border-left: 2px solid var(--color-cement-light);
+
+    &.is-done {
+      border-left-color: var(--color-ink);
+    }
+  }
+}
+
+@include bp.reduced-motion {
+  .steps__fill,
+  .steps__button {
+    transition: none;
+  }
 }

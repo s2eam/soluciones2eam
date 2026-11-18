@@ -1,0 +1,175 @@
+@use "../abstracts/breakpoints" as bp;
+
+// Valores sobre una cinta métrica: cada valor cuelga de una marca.
+.values {
+  --tape: #f2d36b;
+
+  margin-top: var(--space-md);
+}
+
+.values__tape {
+  position: relative;
+  height: 3.25rem;
+  border-radius: 0.35rem;
+  background-color: var(--tape);
+  background-image:
+    linear-gradient(90deg, rgb(8 42 33 / 65%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(8 42 33 / 85%) 1.5px, transparent 1.5px);
+  background-repeat: repeat-x;
+  background-size:
+    2.5% 38%,
+    12.5% 62%;
+  box-shadow:
+    inset 0 -3px 0 rgb(0 0 0 / 8%),
+    0 0.6rem 1.2rem -0.9rem rgb(8 42 33 / 60%);
+
+  // Gancho de la cinta
+  &::after {
+    position: absolute;
+    top: 50%;
+    right: -0.6rem;
+    width: 1.2rem;
+    height: 4rem;
+    border-radius: 0.3rem;
+    background: var(--color-ink);
+    content: "";
+    translate: 0 -50%;
+  }
+}
+
+.values__numbers {
+  position: absolute;
+  inset: auto 0 0.3rem;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 0.4rem;
+  color: rgb(8 42 33 / 70%);
+  font: 500 0.7rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.values__list {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0 1rem 0 0;
+  list-style: none;
+}
+
+.values__item {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+  padding-top: 1.5rem;
+
+  // Línea y punta de la marca
+  &::before {
+    position: absolute;
+    top: -0.35rem;
+    left: 0;
+    width: 2px;
+    height: 1.6rem;
+    background: var(--color-ink);
+    content: "";
+    transition: background-color 0.2s ease;
+  }
+
+  &::after {
+    position: absolute;
+    top: -0.75rem;
+    left: -0.4rem;
+    border: 0.45rem solid transparent;
+    border-top-color: var(--color-ink);
+    border-bottom: 0;
+    content: "";
+  }
+
+  &:hover::before {
+    background: var(--color-brand-deep);
+  }
+}
+
+.values__icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  color: var(--color-brand-deep);
+}
+
+.values__name {
+  font: 700 1.375rem/1.1 var(--font-display);
+}
+
+.values__text {
+  color: var(--color-cement);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+// Tableta y celular: la cinta queda vertical a la izquierda
+@media (width <= 52rem) {
+  .values {
+    display: grid;
+    grid-template-columns: 2.75rem minmax(0, 1fr);
+    gap: 1.25rem;
+  }
+
+  .values__tape {
+    height: auto;
+    background-image:
+      linear-gradient(180deg, rgb(8 42 33 / 65%) 1px, transparent 1px),
+      linear-gradient(180deg, rgb(8 42 33 / 85%) 1.5px, transparent 1.5px);
+    background-repeat: repeat-y;
+    background-size:
+      38% 2.5%,
+      62% 12.5%;
+
+    &::after {
+      inset: auto auto -0.6rem 50%;
+      width: 3.5rem;
+      height: 1.2rem;
+      translate: -50% 0;
+    }
+  }
+
+  .values__numbers {
+    display: none;
+  }
+
+  .values__list {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0;
+  }
+
+  .values__item {
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 0.5rem;
+    padding: 0 0 0 0.9rem;
+
+    &::before {
+      top: 0.55rem;
+      left: -1.75rem;
+      width: 1.6rem;
+      height: 2px;
+    }
+
+    &::after {
+      top: 0.15rem;
+      left: -0.35rem;
+      border: 0.45rem solid transparent;
+      border-right: 0;
+      border-left-color: var(--color-ink);
+    }
+  }
+
+  .values__text {
+    grid-column: 1 / -1;
+  }
+}
+
+@include bp.reduced-motion {
+  .values__item::before {
+    transition: none;
+  }
+}
