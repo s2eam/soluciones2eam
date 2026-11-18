@@ -1,0 +1,24 @@
+.footer {
+  padding-block: var(--space-lg);
+  border-top: 4px solid;
+  border-image: linear-gradient(90deg, var(--color-mint), var(--color-brand)) 1;
+  background: var(--color-ink);
+  color: var(--color-bone);
+}
+
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.footer__logo {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.footer__text {
+  flex: 1 1 16rem;
+  margin: 0;
+}

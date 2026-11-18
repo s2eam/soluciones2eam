@@ -1,0 +1,82 @@
+@use "../abstracts/breakpoints" as bp;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+  text-size-adjust: 100%; // autoprefixer añade -webkit-
+}
+
+body {
+  margin: 0;
+  background: var(--color-bone);
+  color: var(--color-ink);
+  font: 400 1.0625rem/1.6 var(--font-body);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+h1 {
+  font-size: clamp(2.75rem, 8vw, 5.5rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  max-width: var(--measure);
+  margin: 0 0 var(--space-sm);
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-electric);
+  outline-offset: 3px;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--gutter), var(--container-max));
+  margin-inline: auto;
+}
+
+@include bp.reduced-motion {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

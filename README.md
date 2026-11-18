@@ -66,8 +66,10 @@ Los iconos son de [Tabler Icons](https://tabler.io/icons) (licencia MIT, texto e
 
 ```
 public/                 Sitio estático
-  assets/css/base/      Variables (tokens) y estilos base
-  assets/css/blocks/    Un archivo por bloque BEM
+  assets/css/           CSS compilado (lo genera Gulp; no se edita ni se sube a Git)
+  ../src/scss/base/     Variables (tokens) y estilos base
+  ../src/scss/blocks/   Un parcial SCSS por bloque BEM
+  ../src/scss/abstracts/ Mixins y breakpoints
   assets/js/            main.js, config.js y modules/
 netlify/functions/      API: contact.js (/api/contact) y leads.js (/api/leads, protegida)
 netlify/lib/            Código compartido: almacenamiento, correo, servicios
@@ -77,7 +79,8 @@ docs/                   Documentación y decisiones (adr/)
 
 ## Convenciones
 
-- CSS: `bloque__elemento--modificador`, un archivo por bloque en `css/blocks/`, colores y espacios solo desde `tokens.css`. `npm run lint:css` valida el patrón BEM.
+- CSS: `bloque__elemento--modificador`, un parcial por bloque en `src/scss/blocks/`, colores, espacios y radios solo desde `_tokens.scss`. `npm run lint:css` valida SCSS y el patrón BEM.
+- Estilos: edita `src/scss/`, luego `npm run build` (una vez) o `npm run watch` (mientras trabajas). Netlify ejecuta `npm run build` en cada deploy.
 - JS: los ganchos de comportamiento usan atributos `data-js="..."`, no clases de estilo.
 - Commits: mensajes cortos con prefijo (`feat:`, `fix:`, `docs:`, `chore:`).
 

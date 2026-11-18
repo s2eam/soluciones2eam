@@ -1,0 +1,160 @@
+@use "../abstracts/breakpoints" as bp;
+
+.contact {
+  &__layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+
+    @include bp.up("lg") {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+  }
+
+  &__intro {
+    flex: 1 1 18rem;
+
+    @include bp.up("lg") {
+      position: sticky;
+      top: 5rem;
+    }
+  }
+
+  &__note {
+    font-weight: 600;
+  }
+}
+
+// Formulario como tarjeta: esquinas redondeadas, sombra suave y foco visible.
+.contact-form {
+  display: flex;
+  flex: 2 1 28rem;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  min-width: 0;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid var(--color-cement-light);
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  box-shadow: 0 0.75rem 2rem -1rem rgb(0 0 0 / 25%);
+
+  > * {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  // Tablet: campos en parejas
+  & > &__field--half {
+    @include bp.up("sm") {
+      flex: 1 1 calc(50% - var(--space-md) / 2);
+    }
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  &__label {
+    font-weight: 600;
+  }
+
+  &__input {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.9rem;
+    border: 2px solid var(--color-cement-light);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    color: inherit;
+    font: inherit;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+
+    // Texto guía (marca de agua): suave pero con contraste suficiente
+    &::placeholder {
+      color: var(--color-cement);
+      opacity: 0.85;
+    }
+
+    &:hover {
+      border-color: var(--color-cement);
+    }
+
+    &:focus-visible {
+      border-color: var(--color-brand-deep);
+      outline: none;
+      box-shadow: 0 0 0 4px rgb(34 192 202 / 30%);
+    }
+
+    // El <select> sin elegir se ve como un placeholder
+    &:is(select):has(option[value=""]:checked) {
+      color: var(--color-cement);
+    }
+
+    &--flash {
+      animation: field-flash 1s ease;
+
+      @include bp.reduced-motion {
+        animation: none;
+      }
+    }
+  }
+
+  &__consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+
+    input {
+      flex: none;
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-top: 0.2rem;
+      accent-color: var(--color-brand-deep);
+    }
+  }
+
+  &__trap {
+    position: absolute;
+    left: -9999px;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+
+    .button {
+      flex: 1 1 12rem;
+      text-align: center;
+    }
+  }
+
+  &__status {
+    min-height: 1.6em;
+    margin: 0;
+    font-weight: 600;
+
+    &--error {
+      color: var(--color-error);
+    }
+  }
+}
+
+@keyframes field-flash {
+  0% {
+    box-shadow: 0 0 0 0 var(--color-electric);
+  }
+
+  40% {
+    box-shadow: 0 0 0 6px var(--color-electric);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}

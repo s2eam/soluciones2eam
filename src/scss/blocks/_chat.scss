@@ -1,0 +1,131 @@
+@use "../abstracts/breakpoints" as bp;
+
+// Conversación dentro del centro de ayuda (solo se muestra al cotizar o escribir una consulta).
+.chat__bar {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  border-bottom: 1px solid var(--color-cement-light);
+  font-size: 0.875rem;
+}
+
+.chat__back {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-brand-deep);
+  font: 600 0.875rem var(--font-body);
+  cursor: pointer;
+}
+
+.chat__person {
+  font-weight: 600;
+}
+
+.chat__log {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 0;
+  padding: 0.75rem 1.25rem;
+  overflow-y: auto;
+}
+
+.chat__msg {
+  max-width: 88%;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+.chat__msg--bot,
+.chat__msg--typing {
+  align-self: flex-start;
+  border-bottom-left-radius: 0.25rem;
+  background: var(--color-bone);
+}
+
+.chat__msg--user {
+  border-bottom-right-radius: 0.25rem;
+  align-self: flex-end;
+  background: var(--color-ink);
+  color: var(--color-bone);
+}
+
+.chat__msg--typing {
+  animation: chat-pulse 1s ease-in-out infinite;
+}
+
+.chat__msg a {
+  font-weight: 600;
+}
+
+.chat__replies {
+  display: flex;
+  flex: none;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  max-height: 9rem;
+  padding: 0 0.75rem 0.5rem;
+  overflow-y: auto;
+}
+
+.chat__reply {
+  padding: 0.45rem 0.8rem;
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: inherit;
+  font: 600 0.875rem/1.2 var(--font-body);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.chat__reply:hover {
+  background: var(--color-ink);
+  color: var(--color-bone);
+}
+
+.chat__form {
+  display: flex;
+  flex: none;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-top: 1px solid var(--color-cement-light);
+}
+
+.chat__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 2.75rem;
+  padding: 0.6rem;
+  border: 2px solid var(--color-cement);
+  border-radius: var(--radius-md);
+  font: inherit;
+}
+
+@keyframes chat-pulse {
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@include bp.reduced-motion {
+  .chat__reply {
+    transition: none;
+  }
+
+  .chat__msg--typing {
+    animation: none;
+  }
+}

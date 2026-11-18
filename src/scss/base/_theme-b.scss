@@ -1,0 +1,16 @@
+:root[data-theme="b"] {
+  --color-ink: #082a21; /* verde bosque del logo mezclado con el carbón anterior */
+  --color-bone: #eef2f1;
+  --color-cement: #5f6b70;
+  --color-cement-light: #d3dadb;
+  --color-wood: #8a5a36;
+  --color-metal: #c0392b;
+  --color-paint: #2f9e9e;
+  --color-electric: #f2b705;
+  --color-security: #243b6b;
+}
+
+:root[data-theme="b"] .hero__strip-link--paint,
+:root[data-theme="b"] .swatch--paint {
+  color: var(--color-ink);
+}

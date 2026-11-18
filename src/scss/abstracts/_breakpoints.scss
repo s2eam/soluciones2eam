@@ -1,0 +1,26 @@
+@use "sass:map";
+
+// Puntos de quiebre (mobile-first). Mismos valores que usaba el CSS original.
+$breakpoints: (
+  "sm": 40rem,
+  "md": 48rem,
+  "lg": 64rem,
+);
+
+@mixin up($name) {
+  @media (min-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+@mixin down($name) {
+  @media (max-width: map.get($breakpoints, $name)) {
+    @content;
+  }
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

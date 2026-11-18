@@ -1,0 +1,103 @@
+.services__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border: 1px solid var(--color-cement-light);
+  border-radius: 1.25rem;
+  background: var(--color-white);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.service-card:hover,
+.service-card:focus-within {
+  border-color: color-mix(in srgb, var(--card-color, var(--color-cement)) 45%, var(--color-cement-light));
+  box-shadow: 0 1rem 2.5rem -1.25rem rgb(8 42 33 / 35%);
+  transform: translateY(-4px);
+}
+
+.section--light .service-card {
+  background: var(--color-bone);
+}
+
+.service-card--metal {
+  --card-color: var(--color-metal);
+}
+
+.service-card--wood {
+  --card-color: var(--color-wood);
+}
+
+.service-card--cement {
+  --card-color: var(--color-cement);
+}
+
+.service-card--paint {
+  --card-color: var(--color-paint);
+}
+
+.service-card--electric {
+  --card-color: var(--color-electric);
+}
+
+.service-card--security {
+  --card-color: var(--color-security);
+}
+
+.service-card__title {
+  margin-bottom: 0.25rem;
+  font-size: 1.5rem;
+}
+
+.service-card__text {
+  margin: 0;
+}
+
+.service-card__action {
+  margin-top: auto;
+  padding-top: var(--space-sm);
+}
+
+.service-card__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: var(--space-sm);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--card-color, var(--color-cement)) 14%, transparent);
+  color: var(--card-color, var(--color-cement));
+}
+
+.service-card--electric .service-card__icon {
+  background: color-mix(in srgb, var(--card-color) 22%, transparent);
+  color: color-mix(in srgb, var(--card-color) 70%, var(--color-ink));
+}
+
+.service-card__icon .icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card {
+    transition: none;
+  }
+
+  .service-card:hover,
+  .service-card:focus-within {
+    transform: none;
+  }
+}

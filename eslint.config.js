@@ -9,7 +9,7 @@ export default [
     languageOptions: { sourceType: "module", globals: globals.browser },
   },
   {
-    files: ["netlify/**/*.js", "eslint.config.js"],
+    files: ["netlify/**/*.js", "scripts/**/*.mjs", "eslint.config.js", "gulpfile.js"],
     languageOptions: { sourceType: "module", globals: globals.node },
   },
 ];

@@ -1,0 +1,108 @@
+.brand {
+  padding-block: var(--space-lg);
+}
+
+.brand__logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand__mark {
+  width: 6rem;
+  height: 6rem;
+}
+
+.brand__name {
+  font: 700 clamp(2.5rem, 7vw, 4.5rem) / 1 var(--font-display);
+}
+
+.brand__panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-sm);
+  margin-block: var(--space-md);
+}
+
+.brand__panel {
+  padding: var(--space-md);
+}
+
+.brand__panel--dark {
+  background: var(--color-ink);
+  color: var(--color-bone);
+}
+
+.brand__panel--light {
+  background: var(--color-white);
+}
+
+.brand__swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 9rem;
+  padding: var(--space-md) var(--space-sm);
+  color: var(--color-white);
+}
+
+.swatch--cement {
+  background: var(--color-cement);
+}
+
+.swatch--wood {
+  background: var(--color-wood);
+}
+
+.swatch--metal {
+  background: var(--color-metal);
+}
+
+.swatch--paint {
+  background: var(--color-paint);
+}
+
+.swatch--electric {
+  background: var(--color-electric);
+  color: var(--color-ink);
+}
+
+.swatch--security {
+  background: var(--color-security);
+}
+
+.swatch__name {
+  margin: 0;
+  font: 700 1.5rem/1.1 var(--font-display);
+}
+
+.swatch__use {
+  margin: 0;
+}
+
+.swatch--mint {
+  background: var(--color-mint);
+  color: var(--color-ink);
+}
+
+.swatch--brand {
+  background: var(--color-brand);
+  color: var(--color-ink);
+}
+
+.swatch--brand-deep {
+  background: var(--color-brand-deep);
+}
+
+.swatch--ink {
+  background: var(--color-ink);
+}

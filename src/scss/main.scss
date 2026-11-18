@@ -1,0 +1,24 @@
+// Punto de entrada: el orden replica el de main.css original (importa en la cascada).
+@use "base/tokens";
+@use "base/base";
+@use "base/theme-b";
+@use "blocks/button";
+@use "blocks/header";
+@use "blocks/section";
+@use "blocks/hero";
+@use "blocks/services";
+@use "blocks/contact-form";
+@use "blocks/footer";
+@use "blocks/wa-widget";
+@use "blocks/dotnav";
+@use "blocks/brand-board";
+@use "blocks/admin";
+@use "blocks/about";
+@use "blocks/steps";
+@use "blocks/commitments";
+@use "blocks/faq";
+@use "blocks/legal";
+@use "blocks/icons";
+@use "blocks/dock";
+@use "blocks/chat";
+@use "blocks/assistant";

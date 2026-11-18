@@ -1,0 +1,37 @@
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps__item {
+  flex: 1 1 13rem;
+  padding: var(--space-md);
+  background: var(--color-bone);
+  counter-increment: step;
+}
+
+.steps__item::before {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: var(--space-sm);
+  border-radius: 50%;
+  background: var(--color-ink);
+  color: var(--color-electric);
+  font: 700 1.5rem/1 var(--font-display);
+  content: counter(step);
+}
+
+.steps__title {
+  font-size: 1.375rem;
+}
+
+.steps__text {
+  margin: 0;
+}

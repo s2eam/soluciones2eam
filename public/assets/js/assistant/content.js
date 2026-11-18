@@ -89,3 +89,58 @@ export const TEXT = {
   wait: "Un momento, estoy enviando tu solicitud.",
   sendFailed: "No pude enviar tu solicitud en este momento. Puedes reintentar o enviarla por WhatsApp.",
 };
+
+// Centro de ayuda por temas (interfaz sin caja de texto). Las respuestas reutilizan ANSWERS.
+// Tipos de acción: "chat" (cotizar conversando), "form" (ir al formulario), "wa" (WhatsApp), "link" (ancla o página).
+export const HELP_TOPICS = [
+  { key: "cotizar", label: "Cotizar" },
+  { key: "servicios", label: "Servicios" },
+  { key: "zona", label: "Zona" },
+  { key: "garantia", label: "Garantía" },
+  { key: "visita", label: "Visita técnica" },
+  { key: "tiempos", label: "Tiempos" },
+  { key: "datos", label: "Privacidad" },
+];
+
+export const HELP_QA = [
+  {
+    id: "cotizar-como",
+    topic: "cotizar",
+    q: "¿Cómo pido una cotización?",
+    a: "Cuéntanos qué servicio necesitas, en qué zona y cómo contactarte. Te enviamos una cotización por escrito con alcance, materiales y tiempo estimado.",
+    actions: [
+      { type: "form", label: "Ir al formulario", primary: true },
+      { type: "chat", label: "Cotizar por aquí" },
+    ],
+  },
+  { id: "cotizar-precio", topic: "cotizar", q: "¿Cuánto cuesta un trabajo?", a: ANSWERS.precios.replace(" ¿Quieres pedirla ahora?", ""), actions: [{ type: "form", label: "Pedir cotización", primary: true }, { type: "chat", label: "Cotizar por aquí" }] },
+  {
+    id: "cotizar-fotos",
+    topic: "cotizar",
+    q: "¿Puedo enviar fotos del trabajo?",
+    a: "Sí. Después de enviar tu solicitud puedes mandarnos las fotos por WhatsApp. En muchos casos nos permiten cotizar sin visita.",
+    actions: [{ type: "wa", label: "Escribir por WhatsApp", primary: true }],
+  },
+  { id: "servicios-cuales", topic: "servicios", q: "¿Qué servicios ofrecen?", a: ANSWERS.servicios, actions: [{ type: "link", label: "Ver construcción", href: "#construccion", primary: true }, { type: "link", label: "Ver seguridad", href: "#seguridad" }] },
+  {
+    id: "servicios-seguridad",
+    topic: "servicios",
+    q: "¿Venden e instalan cámaras, alarmas o portones?",
+    a: "Sí, vendemos e instalamos cámaras, alarmas y portones eléctricos. Cuéntanos el tipo de propiedad y qué quieres proteger.",
+    actions: [{ type: "form", label: "Pedir cotización", primary: true }, { type: "link", label: "Ver seguridad", href: "#seguridad" }],
+  },
+  {
+    id: "zona-fuera",
+    topic: "zona",
+    q: "¿Trabajan fuera de Cóbano?",
+    a: "Atendemos en Cóbano, Puntarenas. Si tu propiedad está en otra zona, indícala al pedir la cotización y lo revisamos. La distancia se toma en cuenta en la cotización.",
+    actions: [{ type: "form", label: "Pedir cotización", primary: true }, { type: "wa", label: "Preguntar por WhatsApp" }],
+  },
+  { id: "garantia-tiene", topic: "garantia", q: "¿Los trabajos tienen garantía?", a: ANSWERS.garantia, actions: [{ type: "link", label: "Ver garantías", href: "#garantias", primary: true }] },
+  { id: "visita-antes", topic: "visita", q: "¿Necesitan visitar antes de cotizar?", a: ANSWERS.visita, actions: [{ type: "form", label: "Pedir cotización", primary: true }] },
+  { id: "tiempos-respuesta", topic: "tiempos", q: "¿Cuándo me responden?", a: ANSWERS.tiempos.replace(" con el botón de arriba", ""), actions: [{ type: "wa", label: "Escribir por WhatsApp", primary: true }] },
+  { id: "datos-uso", topic: "datos", q: "¿Qué hacen con mis datos?", a: "Usamos tus datos solo para responder tu solicitud. Los detalles están en la política de privacidad.", actions: [{ type: "link", label: "Leer la política", href: "privacidad/", primary: true }] },
+];
+
+// Preguntas que aparecen como burbujas al tocar «Ayuda».
+export const HELP_FEATURED = ["cotizar-como", "zona-fuera", "garantia-tiene"];

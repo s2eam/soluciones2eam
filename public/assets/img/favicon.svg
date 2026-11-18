@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="S2EAM Soluciones"><defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#71da94"/><stop offset="1" stop-color="#22c0ca"/></linearGradient></defs><rect width="64" height="64" rx="14" fill="#082a21"/><path d="M10 52V29L32 10l22 19v23" fill="none" stroke="url(#g)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="32" cy="34" r="12" fill="none" stroke="#22c0ca" stroke-width="3"/>
+<circle cx="32" cy="34" r="5.5" fill="none" stroke="#71da94" stroke-width="3"/>
+<circle cx="32" cy="34" r="1.8" fill="#71da94"/>
+<path d="M20 34h-4.5M44 34h4.5M32 46v6" stroke="#22c0ca" stroke-width="2.4" stroke-linecap="round"/>
+<circle cx="14" cy="34" r="2.2" fill="#71da94"/><circle cx="50" cy="34" r="2.2" fill="#71da94"/></svg>

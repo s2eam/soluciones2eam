@@ -8,7 +8,9 @@
       name="description"
       content="Soldadura, estructuras, pintura y electricidad residencial, más cámaras, alarmas y portones eléctricos en Cóbano, Puntarenas. Pide tu cotización."
     />
-    <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="assets/img/favicon.png" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="assets/img/logo/apple-touch-icon.png" />
     <link rel="canonical" href="https://soluciones2eam.netlify.app/" />
     <meta name="theme-color" content="#082a21" />
     <meta property="og:type" content="website" />
@@ -117,7 +119,7 @@
     <header class="header">
       <div class="wrap header__inner">
         <a class="header__brand" href="#inicio">
-          <img class="header__logo" src="assets/img/logo-s2eam.png" width="94" height="94" alt="" />
+          <img class="header__logo" src="assets/img/logo/logo-symbol.svg" width="64" height="64" alt="" />
           <span class="header__name">
             S2EAM
             <span class="header__slogan">Construimos. Protegemos. Innovamos.</span>
@@ -335,15 +337,15 @@
           <form class="contact-form" data-js="contact-form" novalidate>
             <div class="contact-form__field contact-form__field--half">
               <label class="contact-form__label" for="name">Nombre</label>
-              <input class="contact-form__input" id="name" name="name" autocomplete="name" required />
+              <input class="contact-form__input" id="name" name="name" autocomplete="name" placeholder="Ej.: María Rodríguez" required />
             </div>
             <div class="contact-form__field contact-form__field--half">
               <label class="contact-form__label" for="phone">Teléfono o WhatsApp</label>
-              <input class="contact-form__input" id="phone" name="phone" type="tel" autocomplete="tel" required />
+              <input class="contact-form__input" id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej.: 6095 6381" required />
             </div>
             <div class="contact-form__field contact-form__field--half">
               <label class="contact-form__label" for="email">Correo (opcional)</label>
-              <input class="contact-form__input" id="email" name="email" type="email" autocomplete="email" />
+              <input class="contact-form__input" id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Ej.: nombre@correo.com" />
             </div>
             <div class="contact-form__field contact-form__field--half">
               <label class="contact-form__label" for="service">Servicio</label>
@@ -362,11 +364,11 @@
             </div>
             <div class="contact-form__field">
               <label class="contact-form__label" for="zone">Zona o dirección de la obra</label>
-              <input class="contact-form__input" id="zone" name="zone" />
+              <input class="contact-form__input" id="zone" name="zone" autocomplete="street-address" placeholder="Ej.: Playas del Coco, frente a la plaza" />
             </div>
             <div class="contact-form__field">
               <label class="contact-form__label" for="message">¿Qué necesitas?</label>
-              <textarea class="contact-form__input" id="message" name="message" rows="5" minlength="10" required></textarea>
+              <textarea class="contact-form__input" id="message" name="message" rows="5" minlength="10" placeholder="Ej.: Necesito instalar 4 cámaras en una casa de dos plantas. Cuento con internet en el sitio." required></textarea>
             </div>
             <div class="contact-form__trap" aria-hidden="true">
               <label for="website">No llenar este campo</label>
@@ -388,7 +390,7 @@
 
     <footer class="footer">
       <div class="wrap footer__inner">
-        <img class="footer__logo" src="assets/img/logo-s2eam.png" width="94" height="94" alt="S2EAM" />
+        <img class="footer__logo" src="assets/img/logo/logo-symbol.svg" width="64" height="64" alt="S2EAM" />
         <p class="footer__text">
           S2EAM · Construimos. Protegemos. Innovamos.<br />
           Cóbano, Puntarenas · WhatsApp 6095-6381 · <a href="privacidad/">Política de privacidad</a>
@@ -397,29 +399,11 @@
     </footer>
 
     <div class="dock">
-      <div class="chat" data-js="chat">
-        <section class="chat__panel" id="chat-panel" data-js="chat-panel" role="dialog" aria-label="Asistente de S2EAM" hidden>
-          <header class="chat__header">
-            <div>
-              <p class="chat__title">Asistente S2EAM</p>
-              <p class="chat__subtitle">Asistente automatizado</p>
-            </div>
-            <div class="chat__tools">
-              <a class="button button--ghost button--small" data-js="chat-person" href="#contacto">Hablar con una persona</a>
-              <button class="chat__close" type="button" data-js="chat-close" aria-label="Cerrar asistente"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-x"></use></svg></button>
-            </div>
-          </header>
-          <div class="chat__log" data-js="chat-log" role="log" aria-live="polite" tabindex="0"></div>
-          <div class="chat__replies" data-js="chat-replies"></div>
-          <form class="chat__form" data-js="chat-form">
-            <label class="sr-only" for="chat-input">Escribe tu mensaje</label>
-            <input class="chat__input" id="chat-input" data-js="chat-input" autocomplete="off" maxlength="500" placeholder="Escribe aquí…" />
-            <button class="button button--primary button--small" type="submit">Enviar</button>
-          </form>
-        </section>
-        <button class="chat__toggle" type="button" data-js="chat-toggle" aria-expanded="false" aria-controls="chat-panel">
-          <svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-message-chatbot"></use></svg>
-          Asistente
+      <div class="helper" data-js="helper">
+        <ul class="helper__topics" id="helper-topics" data-js="helper-topics" aria-label="Preguntas frecuentes" hidden></ul>
+        <button class="helper__launcher" type="button" data-js="helper-toggle" aria-expanded="false" aria-controls="helper-topics">
+          <img class="helper__mascot" src="assets/img/logo/logo-symbol.svg" width="40" height="40" alt="" />
+          Ayuda
         </button>
       </div>
       <div class="wa-widget" data-js="wa-widget">
@@ -439,5 +423,47 @@
       </button>
     </div>
     </div>
+
+    <dialog class="help" id="help" data-js="help" aria-labelledby="help-title">
+      <header class="help__head">
+        <div>
+          <p class="help__kicker">Asistente S2EAM · respuestas rápidas</p>
+          <h2 class="help__title" id="help-title" data-js="help-title">¿En qué te ayudamos?</h2>
+        </div>
+        <button class="help__close" type="button" data-js="help-close" aria-label="Cerrar asistente"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-x"></use></svg></button>
+      </header>
+
+      <div class="help__view" data-js="help-topics-view">
+        <div class="help__chips" role="group" aria-label="Temas" data-js="help-chips"></div>
+        <div class="help__grid">
+          <ul class="help__list" data-js="help-list"></ul>
+          <article class="help__answer" data-js="help-answer" aria-live="polite"></article>
+        </div>
+        <div class="help__compose">
+          <button class="help__compose-toggle" type="button" data-js="compose-toggle" aria-expanded="false" aria-controls="compose-box">¿No encontraste tu tema? Escribir mi consulta</button>
+          <div class="help__compose-box" id="compose-box" data-js="compose-box">
+            <form class="help__compose-form" data-js="compose-form">
+              <label class="help__compose-label" for="compose-text">Tu consulta</label>
+              <textarea class="help__compose-input" id="compose-text" data-js="compose-text" rows="3" maxlength="500" placeholder="Ej.: ¿Pueden revisar un portón eléctrico que no cierra?"></textarea>
+              <button class="button button--primary button--small" type="submit">Enviar consulta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="help__view help__view--chat chat" data-js="help-chat-view" hidden>
+        <div class="chat__bar">
+          <button class="chat__back" type="button" data-js="chat-back">← Volver a los temas</button>
+          <a class="chat__person" data-js="chat-person" href="#contacto">Hablar con una persona</a>
+        </div>
+        <div class="chat__log" data-js="chat-log" role="log" aria-live="polite" tabindex="0"></div>
+        <div class="chat__replies" data-js="chat-replies"></div>
+        <form class="chat__form" data-js="chat-form">
+          <label class="sr-only" for="chat-input">Escribe tu mensaje</label>
+          <input class="chat__input" id="chat-input" data-js="chat-input" autocomplete="off" maxlength="500" placeholder="Escribe aquí…" />
+          <button class="button button--primary button--small" type="submit">Enviar</button>
+        </form>
+      </div>
+    </dialog>
   </body>
 </html>
