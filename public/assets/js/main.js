@@ -1,6 +1,8 @@
 import { initAssistant } from "./assistant/ui.js";
 import { initContactForm } from "./modules/contact-form.js";
+import { initCertificate } from "./modules/certificate.js";
 import { initDotnav } from "./modules/dotnav.js";
+import { initPlan } from "./modules/plan.js";
 import { initQuote } from "./modules/quote.js";
 import { initServiceAccordion } from "./modules/service-accordion.js";
 import { initSteps } from "./modules/steps.js";
@@ -13,5 +15,7 @@ initDotnav();
 initQuote();
 initServiceAccordion();
 initSteps();
+initPlan();
+initCertificate();
 initWhatsapp();
 initAssistant();

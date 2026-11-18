@@ -15,8 +15,35 @@
   scroll-snap-align: start;
 }
 
+.hero__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.hero__place {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-mint);
+  font: 500 0.8rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 .hero__title {
   max-width: 14ch;
+  font-size: clamp(2.6rem, 5vw, 4.6rem);
+}
+
+.hero__accent {
+  color: var(--color-mint);
+  font-style: normal;
+}
+
+@include bp.down("lg") {
+  .hero__layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 .hero__title::before {
@@ -29,7 +56,9 @@
 }
 
 .hero__lead {
-  font-size: 1.25rem;
+  max-width: 46ch;
+  font-size: 1.2rem;
+  color: rgb(238 242 241 / 85%);
 }
 
 .hero__actions {

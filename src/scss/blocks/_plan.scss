@@ -1,0 +1,132 @@
+@use "../abstracts/breakpoints" as bp;
+
+// Portada: dibujo técnico de una casa con los servicios señalados (plano vivo).
+.plan {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+}
+
+.plan__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+
+  text {
+    fill: rgb(113 218 148 / 80%);
+    font: 500 11px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: 0.08em;
+  }
+}
+
+.plan__line {
+  fill: none;
+  stroke: rgb(238 242 241 / 55%);
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+  transition:
+    stroke 0.25s ease,
+    stroke-width 0.25s ease;
+
+  &--thin {
+    stroke: rgb(238 242 241 / 28%);
+    stroke-width: 1;
+  }
+
+  &--dim {
+    stroke: rgb(113 218 148 / 55%);
+    stroke-width: 1;
+  }
+
+  // El dibujo se traza solo al cargar la página
+  .plan.is-drawing & {
+    animation: plan-draw 2.2s cubic-bezier(0.5, 0, 0.2, 1) both;
+    animation-delay: calc(var(--d, 0) * 0.12s);
+  }
+}
+
+.plan__pin {
+  circle {
+    fill: var(--color-ink);
+    stroke: var(--color-mint);
+    stroke-width: 1.5;
+    transition: fill 0.2s ease;
+  }
+
+  text {
+    fill: var(--color-mint);
+    font-weight: 600;
+    letter-spacing: 0;
+    dominant-baseline: central;
+    text-anchor: middle;
+  }
+}
+
+// Resalta la parte de la casa que corresponde a la tecla elegida
+@for $i from 1 through 6 {
+  .plan[data-on="#{$i}"] {
+    .plan__part[data-part="#{$i}"] .plan__line {
+      stroke: var(--color-mint);
+      stroke-width: 2.4;
+    }
+
+    .plan__pin[data-part="#{$i}"] circle {
+      fill: var(--color-mint);
+    }
+
+    .plan__pin[data-part="#{$i}"] text {
+      fill: var(--color-ink);
+    }
+  }
+}
+
+.plan__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.plan__key {
+  padding: 0.15rem 0;
+  border: 0;
+  background: none;
+  color: rgb(238 242 241 / 75%);
+  font: 500 0.82rem/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  cursor: pointer;
+
+  b {
+    margin-right: 0.35rem;
+    color: var(--color-mint);
+  }
+
+  &:hover,
+  &:focus-visible,
+  &.is-on {
+    color: var(--color-white);
+  }
+}
+
+@keyframes plan-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@include bp.reduced-motion {
+  .plan__line,
+  .plan.is-drawing .plan__line {
+    animation: none;
+    transition: none;
+  }
+}

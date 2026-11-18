@@ -42,10 +42,11 @@ Versión vectorial en `public/assets/img/logo/`: símbolo, horizontal, vertical,
 
 ## Secciones de la página
 
-- **Portada**: título, texto y botones (sin franja de colores desde la v0.11).
+- **Portada** (`_hero.scss`, `_plan.scss`, `modules/plan.js`): texto a la izquierda y, a la derecha, un plano técnico de una casa con seis servicios señalados. El dibujo se traza al cargar; la leyenda ilumina cada parte y, al tocarla, baja al servicio y abre su panel.
 - **Servicios** (`_services.scss`, `modules/service-accordion.js`): acordeón por grupo. Cada panel es un servicio con su foto; el abierto muestra descripción y "Cotizar este servicio", que preselecciona el servicio en el formulario. En celular los paneles se apilan como franjas.
 - **Fotos de servicios**: `public/assets/img/servicios/*.webp` (Pexels, ver `CREDITOS.md`). Para cambiar una foto basta con reemplazar el archivo con el mismo nombre. Se cargan con ruta desde la raíz (`/assets/...`), así que se ven con `npm run dev` y en Netlify, no con Live Server.
 - **Nuestros valores** (`_values.scss`): cinta métrica; cada valor cuelga de una marca. En pantallas angostas la cinta queda vertical.
+- **Garantías y compromisos** (`_commitments.scss`, `modules/certificate.js`): certificado con seis cláusulas, firma y un sello que cae cuando la hoja aparece en pantalla.
 - **Cómo trabajamos** (`_steps.scss`, `modules/steps.js`): avance de obra de 0 % a 100 %; al tocar una etapa la barra avanza hasta ella.
 
 ## Asistente de primera línea
@@ -92,7 +93,7 @@ docs/                   Documentación y decisiones (adr/)
 - JS: los ganchos de comportamiento usan atributos `data-js="..."`, no clases de estilo.
 - Commits: mensajes cortos con prefijo (`feat:`, `fix:`, `docs:`, `chore:`).
 
-## Estado actual (v0.12)
+## Estado actual (v0.13)
 
 Funciona: página con servicios, formulario y botón de WhatsApp; la función valida los datos, filtra bots, **guarda cada caso** (Netlify Blobs) y **avisa por correo** al negocio (Resend). El panel interno está en `/admin`.
 

@@ -1,34 +1,185 @@
-.commitments {
+@use "../abstracts/breakpoints" as bp;
+
+// Garantías y compromisos como un certificado: hoja con cláusulas, firma y sello.
+.certificate {
+  position: relative;
+  width: 100%;
+  max-width: 50rem;
+  margin: var(--space-md) auto 0;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 4vw, 3.25rem) 2.5rem;
+  border-radius: 0.3rem;
+  background-color: #fbfaf6;
+  background-image: linear-gradient(rgb(8 42 33 / 4%) 1px, transparent 1px);
+  background-size: 100% 1.9rem;
+  box-shadow:
+    0 1.5rem 3rem -1.5rem rgb(8 42 33 / 45%),
+    0 0 0 1px rgb(8 42 33 / 6%);
+  rotate: -0.6deg;
+}
+
+.certificate__head {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-md);
-  margin: var(--space-md) 0 0;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--color-ink);
+}
+
+.certificate__name {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.certificate__ref {
+  margin: 0;
+  color: var(--color-cement);
+  font: 500 0.75rem/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: 0.06em;
+}
+
+.certificate__clauses {
+  margin: 0;
   padding: 0;
   list-style: none;
+  counter-reset: clause;
 }
 
-.commitments__item {
-  flex: 1 1 18rem;
-  padding: var(--space-md);
-  border-left: 6px solid var(--color-cement);
-  background: var(--color-white);
+.certificate__clause {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0.25rem 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px dashed rgb(8 42 33 / 22%);
+  counter-increment: clause;
+
+  &::before {
+    grid-row: span 2;
+    padding-top: 0.35rem;
+    color: var(--color-brand-deep);
+    font: 500 0.72rem/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: 0.04em;
+    content: "Cláusula " counter(clause);
+  }
 }
 
-.commitments__title {
-  font-size: 1.375rem;
-}
-
-.commitments__text {
+.certificate__title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
   margin: 0;
+  font-size: 1.4rem;
+
+  // Línea punteada hasta el margen, como en un documento
+  &::after {
+    flex: 1;
+    border-bottom: 2px dotted rgb(8 42 33 / 25%);
+    content: "";
+    translate: 0 -0.25rem;
+  }
 }
 
-.commitments__icon {
-  display: inline-grid;
-  place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  margin-bottom: var(--space-sm);
-  border-radius: 50%;
-  background: var(--color-ink);
-  color: var(--color-mint);
+.certificate__text {
+  margin: 0;
+  color: var(--color-cement);
+  font-size: 0.97rem;
+}
+
+.certificate__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.certificate__sign {
+  display: grid;
+  gap: 0.2rem;
+  min-width: 12rem;
+
+  svg {
+    width: 11rem;
+    height: 3rem;
+  }
+
+  path {
+    fill: none;
+    stroke: var(--color-ink);
+    stroke-linecap: round;
+    stroke-width: 2;
+  }
+
+  span {
+    padding-top: 0.3rem;
+    border-top: 1px solid var(--color-ink);
+    color: var(--color-cement);
+    font: 500 0.72rem/1.3 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: 0.06em;
+  }
+}
+
+.certificate__stamp {
+  flex: none;
+  width: 8.5rem;
+  height: 8.5rem;
+  margin-left: auto;
+  color: var(--color-brand-deep);
+  rotate: -14deg;
+
+  text {
+    fill: currentcolor;
+    font: 600 10.5px/1 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    letter-spacing: 2.4px;
+  }
+
+  // El sello cae cuando la hoja aparece en pantalla
+  .certificate.is-stamping & {
+    animation: stamp 0.55s cubic-bezier(0.3, 1.6, 0.5, 1) both;
+  }
+}
+
+@keyframes stamp {
+  0% {
+    opacity: 0;
+    scale: 1.8;
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+@include bp.down("sm") {
+  .certificate__clause {
+    grid-template-columns: 1fr;
+
+    &::before {
+      grid-row: auto;
+      padding: 0;
+    }
+  }
+
+  .certificate__stamp {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+}
+
+@include bp.reduced-motion {
+  .certificate.is-stamping .certificate__stamp {
+    animation: none;
+  }
 }

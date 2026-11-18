@@ -144,17 +144,77 @@
 
     <main>
       <section class="hero" id="inicio">
-        <div class="wrap">
-          <h1 class="hero__title">Construimos, reparamos y protegemos tu propiedad.</h1>
-          <p class="hero__lead">
-            En Cóbano, Puntarenas: soldadura, estructuras, pintura y electricidad residencial,
-            más cámaras, alarmas y portones eléctricos. Cuéntanos qué necesitas y te respondemos
-            con una cotización.
-          </p>
-          <div class="hero__actions">
-            <a class="button button--primary" href="#contacto">Pedir cotización</a>
-            <a class="button button--ghost button--on-dark" data-js="whatsapp" href="#contacto">Escribir por WhatsApp</a>
+        <div class="wrap hero__layout">
+          <div class="hero__content">
+            <p class="hero__place">Cóbano · Puntarenas</p>
+            <h1 class="hero__title">Construimos, reparamos y <em class="hero__accent">protegemos</em> tu propiedad.</h1>
+            <p class="hero__lead">
+              Soldadura, estructuras, pintura y electricidad residencial, más cámaras, alarmas y
+              portones eléctricos. Cuéntanos qué necesitas y te respondemos con una cotización.
+            </p>
+            <div class="hero__actions">
+              <a class="button button--primary" href="#contacto">Pedir cotización</a>
+              <a class="button button--ghost button--on-dark" data-js="whatsapp" href="#contacto">Escribir por WhatsApp</a>
+            </div>
           </div>
+          <figure class="plan is-drawing" data-js="plan">
+            <svg class="plan__svg" viewBox="0 0 560 420" role="img" aria-label="Dibujo técnico de una casa con los servicios de S2EAM señalados">
+            <g class="plan__part" data-part="0">
+              <path class="plan__line plan__line--thin" pathLength="1" d="M10 360H550" style="--d:0"/>
+            </g>
+            <g class="plan__part" data-part="1">
+              <path class="plan__line" pathLength="1" d="M128 212L275 108L422 212" style="--d:1"/>
+              <path class="plan__line plan__line--thin" pathLength="1" d="M150 205H400M175 205L200 180L225 205L250 162L275 205L300 162L325 205L350 180L375 205M250 162H300M275 108V205" style="--d:2"/>
+            </g>
+            <g class="plan__part" data-part="0">
+              <path class="plan__line" pathLength="1" d="M150 205V360M400 205V360" style="--d:2"/>
+            </g>
+            <g class="plan__part" data-part="3">
+              <path class="plan__line" pathLength="1" d="M250 360V282H300V360M291 322H293M258 290V352M266 290V352" style="--d:3"/>
+            </g>
+            <g class="plan__part" data-part="0">
+              <path class="plan__line" pathLength="1" d="M170 240H226V286H170ZM198 240V286M170 263H226" style="--d:3"/>
+              <path class="plan__line" pathLength="1" d="M325 240H381V286H325ZM353 240V286M325 263H381" style="--d:4"/>
+            </g>
+            <g class="plan__part" data-part="4">
+              <path class="plan__line plan__line--thin" pathLength="1" d="M318 300L338 350M330 300L350 350M342 300L362 350M354 300L374 350M366 300L386 350M378 300L396 345M318 300H396" style="--d:5"/>
+            </g>
+            <g class="plan__part" data-part="2">
+              <path class="plan__line" pathLength="1" d="M28 296H140V360M28 296V360M40 296V360M52 296V360M64 296V360M76 296V360M88 296V360M100 296V360M112 296V360M124 296V360" style="--d:4"/>
+              <path class="plan__line plan__line--thin" pathLength="1" d="M22 372H146M40 382H60M40 382L46 378M40 382L46 386" style="--d:6"/>
+            </g>
+            <g class="plan__part" data-part="6">
+              <path class="plan__line" pathLength="1" d="M400 212H414V222H404ZM414 216L426 213V225L414 222" style="--d:6"/>
+              <path class="plan__line plan__line--thin" pathLength="1" d="M426 219L470 252M426 219L455 270" style="--d:7"/>
+            </g>
+            <g class="plan__part" data-part="5">
+              <path class="plan__line" pathLength="1" d="M490 360V150M474 166H506M478 178H502" style="--d:5"/>
+              <path class="plan__line plan__line--thin" pathLength="1" d="M478 166C460 190 430 200 400 215" style="--d:7"/>
+            </g>
+            <g>
+              <path class="plan__line plan__line--dim" pathLength="1" d="M150 392H400M150 386V398M400 386V398" style="--d:8"/>
+              <text x="275" y="410" text-anchor="middle">8.40 m</text>
+              <path class="plan__line plan__line--dim" pathLength="1" d="M535 360V108M529 360H541M529 108H541" style="--d:8"/>
+              <text x="548" y="234" transform="rotate(90 548 234)" text-anchor="middle">5.20 m</text>
+            </g>
+            <g class="plan__pin" data-part="1"><circle cx="275" cy="140" r="10"/><text x="275" y="140">1</text></g>
+            <g class="plan__pin" data-part="2"><circle cx="84" cy="276" r="10"/><text x="84" y="276">2</text></g>
+            <g class="plan__pin" data-part="3"><circle cx="275" cy="304" r="10"/><text x="275" y="304">3</text></g>
+            <g class="plan__pin" data-part="4"><circle cx="357" cy="325" r="10"/><text x="357" y="325">4</text></g>
+            <g class="plan__pin" data-part="5"><circle cx="490" cy="230" r="10"/><text x="490" y="230">5</text></g>
+            <g class="plan__pin" data-part="6"><circle cx="410" cy="190" r="10"/><text x="410" y="190">6</text></g>
+          </svg>
+            <figcaption>
+              <ul class="plan__legend" aria-label="Servicios en el plano">
+                <li><button class="plan__key" type="button" data-part="1" data-service="soldadura-estructuras"><b>1</b>Estructura metálica</button></li>
+                <li><button class="plan__key" type="button" data-part="2" data-service="portones"><b>2</b>Portón eléctrico</button></li>
+                <li><button class="plan__key" type="button" data-part="3" data-service="madera"><b>3</b>Acabado en madera</button></li>
+                <li><button class="plan__key" type="button" data-part="4" data-service="pintura"><b>4</b>Pintura</button></li>
+                <li><button class="plan__key" type="button" data-part="5" data-service="electricidad"><b>5</b>Electricidad</button></li>
+                <li><button class="plan__key" type="button" data-part="6" data-service="cctv"><b>6</b>Cámaras</button></li>
+              </ul>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -379,14 +439,33 @@
       <section class="section section--commitments" id="garantias">
         <div class="section__inner">
           <h2 class="section__title">Garantías y compromisos</h2>
-          <ul class="commitments">
-            <li class="commitments__item"><span class="commitments__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-file-text"></use></svg></span><h3 class="commitments__title">Cotización por escrito</h3><p class="commitments__text">Cada cotización detalla el alcance, los materiales y el tiempo estimado.</p></li>
-            <li class="commitments__item"><span class="commitments__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-certificate"></use></svg></span><h3 class="commitments__title">Respaldo profesional</h3><p class="commitments__text">Las obras estructurales que lo requieren pasan por revisión de un ingeniero estructural.</p></li>
-            <li class="commitments__item"><span class="commitments__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-clipboard-check"></use></svg></span><h3 class="commitments__title">Obra revisada</h3><p class="commitments__text">Revisamos cada trabajo antes de entregarlo.</p></li>
-            <li class="commitments__item"><span class="commitments__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-file-certificate"></use></svg></span><h3 class="commitments__title">Garantía por escrito</h3><p class="commitments__text">El plazo y las condiciones de la garantía se indican en la cotización de cada trabajo.</p></li>
-            <li class="commitments__item"><span class="commitments__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-message-circle"></use></svg></span><h3 class="commitments__title">Atención de reclamos</h3><p class="commitments__text">Respondemos cualquier reclamo por escrito, por WhatsApp o correo.</p></li>
-            <li class="commitments__item"><span class="commitments__icon"><svg class="icon" aria-hidden="true"><use href="assets/img/icons.svg#ti-lock"></use></svg></span><h3 class="commitments__title">Uso responsable de tus datos</h3><p class="commitments__text">Usamos tu información solo para responder tu solicitud. Más detalles en la política de privacidad.</p></li>
-          </ul>
+          <article class="certificate" data-js="certificate">
+            <header class="certificate__head">
+              <p class="certificate__name">Compromisos S2EAM</p>
+              <p class="certificate__ref">Documento S2-0001 · Cóbano, Puntarenas</p>
+            </header>
+            <ol class="certificate__clauses">
+              <li class="certificate__clause"><h3 class="certificate__title">Cotización por escrito</h3><p class="certificate__text">Cada cotización detalla el alcance, los materiales y el tiempo estimado.</p></li>
+              <li class="certificate__clause"><h3 class="certificate__title">Respaldo profesional</h3><p class="certificate__text">Las obras estructurales que lo requieren pasan por revisión de un ingeniero estructural.</p></li>
+              <li class="certificate__clause"><h3 class="certificate__title">Obra revisada</h3><p class="certificate__text">Revisamos cada trabajo antes de entregarlo.</p></li>
+              <li class="certificate__clause"><h3 class="certificate__title">Garantía por escrito</h3><p class="certificate__text">El plazo y las condiciones de la garantía se indican en la cotización de cada trabajo.</p></li>
+              <li class="certificate__clause"><h3 class="certificate__title">Atención de reclamos</h3><p class="certificate__text">Respondemos cualquier reclamo por escrito, por WhatsApp o correo.</p></li>
+              <li class="certificate__clause"><h3 class="certificate__title">Uso responsable de tus datos</h3><p class="certificate__text">Usamos tu información solo para responder tu solicitud. Más detalles en la política de privacidad.</p></li>
+            </ol>
+            <footer class="certificate__foot">
+              <div class="certificate__sign">
+                <svg viewBox="0 0 180 50" aria-hidden="true"><path d="M6 36C20 10 30 8 30 26S40 44 52 22 70 6 74 28 90 40 100 24 118 18 126 30 150 22 172 18" /></svg>
+                <span>Firma responsable · S2EAM</span>
+              </div>
+              <svg class="certificate__stamp" viewBox="0 0 140 140" role="img" aria-label="Sello: garantizado por escrito">
+                <defs><path id="stamp-path" d="M70 70m-52 0a52 52 0 1 1 104 0a52 52 0 1 1 -104 0" /></defs>
+                <circle cx="70" cy="70" r="66" fill="none" stroke="currentColor" stroke-width="2.5" />
+                <circle cx="70" cy="70" r="40" fill="none" stroke="currentColor" stroke-width="1.2" />
+                <text><textPath href="#stamp-path">S2EAM · GARANTIZADO POR ESCRITO ·</textPath></text>
+                <g transform="translate(46 46) scale(0.75)" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 52V29L32 10l22 19v23" /><circle cx="32" cy="34" r="10" /><circle cx="32" cy="34" r="3.5" /></g>
+              </svg>
+            </footer>
+          </article>
         </div>
       </section>
 
